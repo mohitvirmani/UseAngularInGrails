@@ -31,6 +31,7 @@ class HomeController {
 		def res = new HashMap()
 		if(params){
 			News obj = new News();
+
 			if(params?.Heading)
 				obj.heading=params?.Heading
 			if(params?.Discription)
@@ -39,6 +40,7 @@ class HomeController {
 				
 		if(params.photo.getOriginalFilename()){
 				obj.pic = params.photo.getOriginalFilename()
+
 				if(obj.save(flush:true)){
 					def path = 	grailsApplication.config.newsImageLocation+File.separator+obj.id
 					File file1 = new File(path)

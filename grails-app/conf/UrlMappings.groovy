@@ -10,7 +10,6 @@ class UrlMappings {
         "/"(view:"index")
         "500"(view:'/error')
 		
-		
 		"/getNewslist(.${format})"(controller:"home", parseRequest:true){
 			action = [ GET:"getAllNews"]
 		}
