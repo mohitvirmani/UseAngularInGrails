@@ -1,3 +1,5 @@
+//creates a new module named useAngular, and app.js also provides details, of the views to be rendered and controllers
+//to be used, for various URL's
 var app = angular.module('useAngular', ['ngRoute']);
 
 app.config(['$routeProvider','$httpProvider', function($routeProvider,$http) {

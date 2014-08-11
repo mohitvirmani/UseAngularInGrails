@@ -1,8 +1,10 @@
+//Creates reference of useAngular module
 var homePage= angular.module('useAngular');
 
-
+//homePageData controller defined below
 homePage.controller('homePageData',['$scope','$http','$location',function($scope,$http,$location) {
 
+// new function 'getAllNews()' created in the homePageData controller
 $scope.getAllNews = function(){
  $http.get('getNewslist.json').success(function(data) {
         		$scope.news = data.news;

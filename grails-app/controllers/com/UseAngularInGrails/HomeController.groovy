@@ -4,6 +4,7 @@ class HomeController {
 
 	static allowedMethods = [getAllNews: "GET"]
 
+	//First hit, index page, redirected to index.gsp view
 	def index() {
 	}
 

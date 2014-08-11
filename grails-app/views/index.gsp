@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html ng-app="useAngular">
+<!-- This module directs the view to fetch the details from app.js, redirected to app.js -->
 	<head>
 		
 	    <link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/bootstrap.css">
