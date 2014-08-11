@@ -4,24 +4,22 @@ var homePage= angular.module('useAngular');
 //homePageData controller defined below
 homePage.controller('homePageData',['$scope','$http','$location',function($scope,$http,$location) {
 
-// new function 'getAllNews()' created in the homePageData controller
+//new function 'getAllNews()' created in the homePageData controller
 $scope.getAllNews = function(){
- $http.get('getNewslist.json').success(function(data) {
+	$http.get('getNewslist.json').success(function(data) {
         		$scope.news = data.news;
                 console.log(data.news);
-        	});
+	});
 }
 $scope.getAllNews();
 
 $scope.submitNews = function(){
-
-var res=uploadNewsRecord();
-$location.path("/");
+	var res=uploadNewsRecord();
+	$location.path("/");
 }
 
 }]);
 
-;
 function uploadNewsRecord(){
 	var formdata = new FormData(document.forms.namedItem("uploadNewsForm"));
 	
@@ -43,13 +41,12 @@ function uploadNewsRecord(){
 	});
 }
 
-
-homePage.controller('showImage',['$scope','$http','$location',function($scope,$http,$location) {
+homePage.controller('showImage',['$scope','$http','$location',function($scope,$http,$location){
 $scope.getAllNews = function(){
- $http.get('getNewslist.json').success(function(data) {
-        		$scope.news = data.news;
-                console.log(data.news);
-        	});
+	$http.get('getNewslist.json').success(function(data) {
+		$scope.news = data.news;
+		console.log(data.news);
+	});
 }
 $scope.getAllNews();
 }]);
