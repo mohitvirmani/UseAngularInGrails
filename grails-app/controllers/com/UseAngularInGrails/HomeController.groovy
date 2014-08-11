@@ -31,10 +31,8 @@ class HomeController {
 		def res = new HashMap()
 		if(params){
 			News obj = new News();
-			if(params?.Heading)
-				obj.heading=params?.Heading
-			if(params?.Discription)
-				obj.descripton=params?.Discription
+			if(params?.Heading) obj.heading=params?.Heading
+			if(params?.Discription) obj.descripton=params?.Discription
 			def uploadfile =  request.getFile("photo")
 			def webRootDir = servletContext.getRealPath("/")
 			log.debug uploadfile.originalFilename +"==="+webRootDir
