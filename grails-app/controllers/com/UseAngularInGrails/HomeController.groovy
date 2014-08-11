@@ -28,7 +28,7 @@ class HomeController {
 	}
 
 	def saveNews(){
-		println "Add params "+params
+		println "Add paramss "+params
 		def res = new HashMap()
 		if(params){
 			News obj = new News();
