@@ -28,14 +28,16 @@ background-color:blue;
 
 <div id="banner">
 <a href="#addNews" class="btn btn-primary" style="margin-top: 100px">Add News</a>
+<a href="#NewsList" class="btn btn-primary" style="margin-top: 100px">News List</a>
 </div>
 <div id="difLine"></div>
+
    <div ng-repeat="n in news" id="news_in_div">
    
    <div style="height:100px;background-color:white;" >
    		<img 
 						style="width: 316px; height: 120PX; border: 1px solid #eee;"
-						src="{{n.picpath}}" />
+						src="/home/renderImage?id={{n.id}}" />
   </div>
    
    <div style="width: 316px;height: 100px;background-color: white">
