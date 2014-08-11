@@ -1,24 +1,27 @@
+//Creates reference of useAngular module
 var homePage= angular.module('useAngular');
 
-
+//homePageData controller defined below
 homePage.controller('homePageData',['$scope','$http','$location',function($scope,$http,$location) {
 
+//new function 'getAllNews()' created in the homePageData controller
 $scope.getAllNews = function(){
- $http.get('getNewslist.json').success(function(data) {
+	$http.get('getNewslist.json').success(function(data) {
         		$scope.news = data.news;
  });
+
 }
 $scope.getAllNews();
 
+//new function created, to add new news to the database
 $scope.submitNews = function(){
-
-var res=uploadNewsRecord();
-$location.path("/");
+	var res=uploadNewsRecord();
+	$location.path("/");
 }
 
 }]);
 
-;
+//gets form data, and saves to database
 function uploadNewsRecord(){
 	var formdata = new FormData(document.forms.namedItem("uploadNewsForm"));
 	
@@ -40,13 +43,14 @@ function uploadNewsRecord(){
 	});
 }
 
-
-homePage.controller('showImage',['$scope','$http','$location',function($scope,$http,$location) {
+//New Angular Controller created, showImage
+homePage.controller('showImage',['$scope','$http','$location',function($scope,$http,$location){
+	
 $scope.getAllNews = function(){
- $http.get('getNewslist.json').success(function(data) {
-        		$scope.news = data.news;
-                console.log(data.news);
-        	});
+	$http.get('getNewslist.json').success(function(data) {
+		$scope.news = data.news;
+		console.log(data.news);
+	});
 }
 $scope.getAllNews();
 }]);

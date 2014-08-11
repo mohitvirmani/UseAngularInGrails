@@ -1,19 +1,18 @@
 package com.UseAngularInGrails
 
-
-
 class HomeController {
 
 	static allowedMethods = [getAllNews: "GET"]
 
+	//First hit, index page, redirected to index.gsp view
 	def index() {
 	}
 
 	def getAllNews(){
-		println "List"
+		log.debug "getAllNews started"
 		def res = new HashMap()
 		def news = News.list();
-		println news
+		log.debug "news " + news
 		if(news.size()>0){
 			res.news =news
 			res.status="success"
@@ -28,7 +27,7 @@ class HomeController {
 	}
 
 	def saveNews(){
-		println "Add paramss "+params
+		log.debug "Add paramss "+params
 		def res = new HashMap()
 		if(params){
 			News obj = new News();
@@ -36,6 +35,7 @@ class HomeController {
 				obj.heading=params?.Heading
 			if(params?.Discription)
 				obj.descripton=params?.Discription
+
 				
 		if(params.photo.getOriginalFilename()){
 				obj.pic = params.photo.getOriginalFilename()
@@ -58,6 +58,7 @@ class HomeController {
 					}
 					is.close()
 					os.close()
+
 					if(f.exists()) {
 						obj.picpath = path+File.separator+params.photo.getOriginalFilename()
 						obj.save(flush:true)
@@ -85,6 +86,7 @@ class HomeController {
 		File imageFile=new File(news.picpath)
 		if(imageFile.exists())
 		{
+
 			byte[] buffer=new FileInputStream(imageFile).getBytes()
 			response.setContentLength(buffer.length)
 			response.outputStream.write(buffer)

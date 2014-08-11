@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html ng-app="useAngular">
+<!-- This module directs the view to fetch the details from app.js, redirected to app.js -->
 	<head>
 		
 	    <link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/jasny-bootstrap.css">
 		<link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/jasny-bootstrap.min.css">
+		<link rel="stylesheet" href="/UseAngularInGrails/static/css/customStyle.css">
+		
 		<title>Use Angular In Grail</title>
 		<script src="/UseAngularInGrails/static/js/angular/jquery-1.10.2.min.js"></script>
 		<script src="/UseAngularInGrails/static/js/angular/angular-resource.js"></script>
