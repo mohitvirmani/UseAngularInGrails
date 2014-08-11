@@ -1,7 +1,5 @@
 package com.UseAngularInGrails
 
-
-
 class HomeController {
 
 	static allowedMethods = [getAllNews: "GET"]
