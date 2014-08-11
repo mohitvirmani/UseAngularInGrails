@@ -35,9 +35,7 @@ background-color:blue;
    <div ng-repeat="n in news" id="news_in_div">
    
    <div style="height:100px;background-color:white;" >
-   		<img 
-						style="width: 316px; height: 120PX; border: 1px solid #eee;"
-						src="/home/renderImage?id={{n.id}}" />
+   	<img style="width: 316px; height: 120PX; border: 1px solid #eee;" src='/UseAngularInGrails/home/renderImage/{{n.id}}' />
   </div>
    
    <div style="width: 316px;height: 100px;background-color: white">

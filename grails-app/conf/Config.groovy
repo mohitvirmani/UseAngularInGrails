@@ -92,7 +92,7 @@ grails.hibernate.osiv.readonly = false
 environments {
     development {
         grails.logging.jul.usebridge = true
-		newsImageLocation = "${userHome}/newsImages"
+		newsImageLocation = "${userHome}"+File.separator+"newsImages"
     }
     production {
         grails.logging.jul.usebridge = false

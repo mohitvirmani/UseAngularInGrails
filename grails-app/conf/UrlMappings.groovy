@@ -18,5 +18,8 @@ class UrlMappings {
 		"/uploadNews/record(.${format})"(controller:"home", parseRequest:true){
 			action = [ POST:"saveNews"]
 		}
+		
+		
+		
 	}
 }

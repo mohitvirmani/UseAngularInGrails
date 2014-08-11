@@ -8,7 +8,10 @@ $routeProvider.when('/', {
   }).when('/addNews', {
 	templateUrl : 'view/addNews.html',
 	controller : 'homePageData'
-  }).otherwise({
+  }).when('/NewsList', {
+		templateUrl : 'view/listNews.html',
+		controller : 'homePageData'
+	  }).otherwise({
 	redirectTo: '/'
   });
 }]);
