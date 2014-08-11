@@ -29,6 +29,12 @@ class HomeController {
 	def saveNews(){
 		log.debug "Add paramss "+params
 		def res = new HashMap()
+		res = saveNewsToDB(params)
+		respond res,[formats:['json', 'xml']];
+		return res
+	}
+	
+	HashMap saveNewsToDB(params){
 		if(params){
 			News obj = new News();
 			if(params?.Heading) obj.heading=params?.Heading
@@ -63,12 +69,9 @@ class HomeController {
 					res.message="News Successfully Saved"
 				}
 			}
+			return res
 		}
-
-		respond res,[formats:['json', 'xml']];
-		return res
 	}
-
 
 	def renderImage(){
 		log.debug "render image started"+params.id
