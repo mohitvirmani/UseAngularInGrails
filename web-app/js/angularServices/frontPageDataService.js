@@ -1,3 +1,4 @@
+//TODO: to be used
 angular.module('UseAngularInGrail.services', []).service('frontPageListservice', function($http) {
 
 	  var userListAPI = [];
