@@ -13,6 +13,7 @@ $scope.getAllNews = function(){
 }
 $scope.getAllNews();
 
+//new function created, to add new news to the database
 $scope.submitNews = function(){
 	var res=uploadNewsRecord();
 	$location.path("/");
@@ -20,6 +21,7 @@ $scope.submitNews = function(){
 
 }]);
 
+//gets form data, and saves to database
 function uploadNewsRecord(){
 	var formdata = new FormData(document.forms.namedItem("uploadNewsForm"));
 	
@@ -41,7 +43,9 @@ function uploadNewsRecord(){
 	});
 }
 
+//New Angular Controller created, showImage
 homePage.controller('showImage',['$scope','$http','$location',function($scope,$http,$location){
+	
 $scope.getAllNews = function(){
 	$http.get('getNewslist.json').success(function(data) {
 		$scope.news = data.news;
