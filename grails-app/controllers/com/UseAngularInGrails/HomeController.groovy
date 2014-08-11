@@ -89,9 +89,7 @@ class HomeController {
 	def renderImage(){
 		def news=News.findById(Long.parseLong(params.id));
 		File imageFile=new File(news.picpath)
-		if(imageFile.exists())
-		{
-
+		if(imageFile.exists()){
 			byte[] buffer=new FileInputStream(imageFile).getBytes()
 			response.setContentLength(buffer.length)
 			response.outputStream.write(buffer)
