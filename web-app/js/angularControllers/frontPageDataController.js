@@ -8,8 +8,8 @@ homePage.controller('homePageData',['$scope','$http','$location',function($scope
 $scope.getAllNews = function(){
 	$http.get('getNewslist.json').success(function(data) {
         		$scope.news = data.news;
-                console.log(data.news);
-	});
+ });
+
 }
 $scope.getAllNews();
 

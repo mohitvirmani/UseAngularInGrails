@@ -37,25 +37,38 @@ class HomeController {
 	HashMap saveNewsToDB(params){
 		if(params){
 			News obj = new News();
-			if(params?.Heading) obj.heading=params?.Heading
-			if(params?.Discription) obj.descripton=params?.Discription
-			def uploadfile =  request.getFile("photo")
-			def webRootDir = servletContext.getRealPath("/")
-			log.debug uploadfile.originalFilename +"==="+webRootDir
-			if(uploadfile.originalFilename){
-				obj.pic = uploadfile.originalFilename
+
+			if(params?.Heading)
+				obj.heading=params?.Heading
+			if(params?.Discription)
+				obj.descripton=params?.Discription
+
+				
+		if(params.photo.getOriginalFilename()){
+				obj.pic = params.photo.getOriginalFilename()
+
 				if(obj.save(flush:true)){
-					def path = 	webRootDir+"images"+File.separator+"newsImages"+File.separator+obj.id
-					File f1 = new File((path))
-					if(f1.exists()) {
-						log.debug "exist== "+f1.exists()
+					def path = 	grailsApplication.config.newsImageLocation+File.separator+obj.id
+					File file1 = new File(path)
+					if(file1.exists())
+					{
+						println "File Exist"+file1.exists()
 					}else{
-						log.debug "created "+f1.mkdirs();
+						println "File Created "+file1.mkdirs();
 					}
-					uploadfile.transferTo( new File( path, uploadfile.originalFilename))
-					File f = new File((path+File.separator+uploadfile.originalFilename))
+					File f=new File(path+File.separator+params.photo.getOriginalFilename())
+					InputStream is = params.photo?.getInputStream()
+					OutputStream os = new FileOutputStream(path+File.separator+params.photo.getOriginalFilename())   //file path
+					byte[] buffer = new byte[params.photo?.getSize()]
+					int bytesRead
+					while ((bytesRead = is.read(buffer)) != -1) {
+						os.write(buffer, 0, bytesRead)
+					}
+					is.close()
+					os.close()
+
 					if(f.exists()) {
-						obj.picpath = "images"+File.separator+"newsImages"+File.separator+obj.id+File.separator+uploadfile.originalFilename
+						obj.picpath = path+File.separator+params.photo.getOriginalFilename()
 						obj.save(flush:true)
 						res.status="success"
 						res.message="News Successfully Saved"
@@ -74,10 +87,11 @@ class HomeController {
 	}
 
 	def renderImage(){
-		log.debug "render image started"+params.id
-		def news=News.findById(params.id);
-		if(new File((news.picpath)).exists()) {
-			File imageFile=new File(news.picpath)
+		def news=News.findById(Long.parseLong(params.id));
+		File imageFile=new File(news.picpath)
+		if(imageFile.exists())
+		{
+
 			byte[] buffer=new FileInputStream(imageFile).getBytes()
 			response.setContentLength(buffer.length)
 			response.outputStream.write(buffer)
