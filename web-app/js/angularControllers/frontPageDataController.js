@@ -43,14 +43,3 @@ function uploadNewsRecord(){
 	});
 }
 
-//New Angular Controller created, showImage
-homePage.controller('showImage',['$scope','$http','$location',function($scope,$http,$location){
-	
-$scope.getAllNews = function(){
-	$http.get('getNewslist.json').success(function(data) {
-		$scope.news = data.news;
-		console.log(data.news);
-	});
-}
-$scope.getAllNews();
-}]);

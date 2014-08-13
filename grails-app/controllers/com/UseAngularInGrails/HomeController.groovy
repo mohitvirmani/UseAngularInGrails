@@ -33,53 +33,59 @@ class HomeController {
 		respond res,[formats:['json', 'xml']];
 		return res
 	}
-	
+
 	HashMap saveNewsToDB(params){
 		if(params){
-			News obj = new News();
+			def res = new HashMap()
+			def count = Integer.parseInt(params.count)
+			for(int i=0;i<=count;i++){
+				println i
+				News obj = new News();
 
-			if(params?.Heading)
-				obj.heading=params?.Heading
-			if(params?.Discription)
-				obj.descripton=params?.Discription
+				if(request.getParameter("Heading"+i))
+					obj.heading=request.getParameter("Heading"+i)
+				if(request.getParameter("Discription"+i))
+					obj.descripton=request.getParameter("Discription"+i)
 
-				
-		if(params.photo.getOriginalFilename()){
-				obj.pic = params.photo.getOriginalFilename()
+				def fll=request.getFile("photo"+i).getOriginalFilename()
+				log.debug(fll)
+				if(fll){
+					obj.pic = fll
 
-				if(obj.save(flush:true)){
-					def path = 	grailsApplication.config.newsImageLocation+File.separator+obj.id
-					File file1 = new File(path)
-					if(file1.exists())
-					{
-						println "File Exist"+file1.exists()
-					}else{
-						println "File Created "+file1.mkdirs();
-					}
-					File f=new File(path+File.separator+params.photo.getOriginalFilename())
-					InputStream is = params.photo?.getInputStream()
-					OutputStream os = new FileOutputStream(path+File.separator+params.photo.getOriginalFilename())   //file path
-					byte[] buffer = new byte[params.photo?.getSize()]
-					int bytesRead
-					while ((bytesRead = is.read(buffer)) != -1) {
-						os.write(buffer, 0, bytesRead)
-					}
-					is.close()
-					os.close()
+					if(obj.save(flush:true)){
+						def path = 	grailsApplication.config.newsImageLocation+File.separator+obj.id
+						File file1 = new File(path)
+						if(file1.exists())
+						{
+							println "File Exist"+file1.exists()
+						}else{
+							println "File Created "+file1.mkdirs();
+						}
+						File f=new File(path+File.separator+fll)
+						InputStream is = request.getFile("photo"+i).getInputStream()
+						OutputStream os = new FileOutputStream(path+File.separator+fll)   //file path
+						byte[] buffer = new byte[request.getFile("photo"+i).getSize()]
+						int bytesRead
+						while ((bytesRead = is.read(buffer)) != -1) {
+							os.write(buffer, 0, bytesRead)
+						}
+						is.close()
+						os.close()
 
-					if(f.exists()) {
-						obj.picpath = path+File.separator+params.photo.getOriginalFilename()
-						obj.save(flush:true)
+						if(f.exists()) {
+							obj.picpath = path+File.separator+fll
+							obj.save(flush:true)
+							res.status="success"
+							res.message="News Successfully Saved"
+						}else{
+							res.status="success"
+							res.message="News Successfully Saved"
+						}
+					} else{
+						obj.errors.each {print it}
 						res.status="success"
 						res.message="News Successfully Saved"
-					}else{
-						res.status="success"
-						res.message="News Successfully Saved"
 					}
-				} else{
-					obj.errors.each {print it}
-					res.status="success"
-					res.message="News Successfully Saved"
 				}
 			}
 			return res

@@ -19,6 +19,24 @@ class UrlMappings {
 		}
 		
 		
+		"/list/recipies(.${format})"(controller:"home", parseRequest:true){
+			action = [ POST:"saveNews"]
+		}
+		
+		group("/recipies") {
+			"/create.${format}"(controller:"admin", parseRequest:true){
+				action = [ POST:"saveProspect"]
+			}
+			"/assign(.${format})"(controller:"admin", parseRequest:true){
+				action = [ POST:"assignProspectToRM"]
+			}
+			"/list.${format}"(controller:"recipies", parseRequest:true){
+				action = [ GET:"recipieslist"]
+			}
+			"/delete/$id(.${format})"(controller:"admin", parseRequest:true){
+				action = [ DELETE:"deleteProspect"]
+			}
+		}
 		
 	}
 }
