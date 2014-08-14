@@ -43,3 +43,7 @@ function uploadNewsRecord(){
 	});
 }
 
+homePage.controller('RecipiesPageData',['$scope','$http','$location',function($scope,$http,$location) {
+
+
+	}]);

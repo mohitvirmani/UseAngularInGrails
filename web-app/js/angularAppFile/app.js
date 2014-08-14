@@ -14,6 +14,12 @@ app.config([ '$routeProvider', '$httpProvider',
 			}).when('/NewsList', {
 				templateUrl : 'view/listNews.html',
 				controller : 'homePageData'
+			}).when('/RecipieList', {
+				templateUrl : 'view/listRecipies.html',
+				controller : 'RecipiesPageData'
+			}).when('/newRecipie', {
+				templateUrl : 'view/addRecipie.html',
+				controller : 'RecipiesPageData'
 			}).otherwise({
 				redirectTo : '/'
 			});
