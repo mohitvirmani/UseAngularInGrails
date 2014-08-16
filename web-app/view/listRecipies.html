@@ -9,11 +9,34 @@
 <th>Sr. no.</th>
 <th>Recipie Name</th>
 <th>Description</th>
+<th>Ingredients</th>
+<th>View Pic</th>
 <th>Action</th>
 </tr>
 </thead>
 <tbody>
-
+<tr ng-repeat="list in recipielist | filter:search">
+<td>{{$index+1}}</td>
+<td>{{list.name}}</td>
+<td>{{list.description}}</td>
+<td><a href="" ng-click='getIngredients(list.id)'>view Ingredients List</a></td>
+<td><a href="" ng-click='changeImage(list.id,list.name)'>Picture</a></td>
+<td><a href="">Edit</a>  / <a href="">Delete</a></td>
+</tr>
 </tbody>
 </table>
 </div>
+
+<div style="width: 500px;height: 200px;margin-left: 20px;">
+<div style="height: 15px;"><h4> Recipie {{name}} Image :-</h4></div>
+<img src="/UseAngularInGrails/recipies/renderImage/{{imageId}}" style="width: 500px;height: 200px"/>
+</div>
+<div  style="color:black;width: 600px;height: 300px;background-color: green;margin-top: -186px;margin-left: 600px;overflow: scroll;	">
+<div ng-repeat="list in ingredientslist">
+<h4>Ingredients {{$index+1}}:-</h4>
+<p>Ingredient Name :-{{list.ingredientName}}</p>
+<p>Amount :-{{list.amount}}</p>
+<p>Amount Units :-{{list.amountUnits}}</p>
+</div>
+</div>
+

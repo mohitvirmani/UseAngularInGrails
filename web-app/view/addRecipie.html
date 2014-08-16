@@ -8,7 +8,8 @@
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-12 col-sm-10">
-							<form action="" name="uploadNewsForm" role="form" novalidate>
+							<form action="" name="uploadRecipiesForm" role="form" novalidate>
+							<input type="text" name="count" id="count" style="display:none; " value="0">
 								<div class="row">
 										<div class="col-xs-12">
 											<p class="mr-b5">
@@ -111,13 +112,13 @@
 												<div class="row">
 													<div class="form-group">
 														<button type="button" class="btn btn-primary"
-															ng-click="submitRecipie(uploadRecipieForm)">Save Recipie</button>
+															ng-click="saveData(uploadRecipieForm)">Save Recipie</button>
 
 													</div>
 												</div>
 											</div>
 										</div>
-									<input type="number" name="count" id="count" style="display:none; " value="0">
+									
 							</form>
 						</div>
 					</div>

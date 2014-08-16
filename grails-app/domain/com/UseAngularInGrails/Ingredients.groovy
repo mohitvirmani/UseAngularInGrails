@@ -2,7 +2,7 @@ package com.UseAngularInGrails
 
 class Ingredients {
 
-	String amount
+	double amount
 	
 	String amountUnits
 	

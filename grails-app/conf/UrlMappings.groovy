@@ -19,24 +19,19 @@ class UrlMappings {
 		}
 		
 		
-		"/list/recipies(.${format})"(controller:"home", parseRequest:true){
-			action = [ POST:"saveNews"]
+		"/getRecipielist(.${format})"(controller:"recipies", parseRequest:true){
+			action = [ GET:"recipieslist"]
 		}
 		
-		group("/recipies") {
-			"/create.${format}"(controller:"admin", parseRequest:true){
-				action = [ POST:"saveProspect"]
-			}
-			"/assign(.${format})"(controller:"admin", parseRequest:true){
-				action = [ POST:"assignProspectToRM"]
-			}
-			"/list.${format}"(controller:"recipies", parseRequest:true){
-				action = [ GET:"recipieslist"]
-			}
-			"/delete/$id(.${format})"(controller:"admin", parseRequest:true){
-				action = [ DELETE:"deleteProspect"]
-			}
+		"/getIngredientslist/$id(.${format})"(controller:"recipies", parseRequest:true){
+			action = [ GET:"ingredientsList"]
 		}
+		
+		"/recipies/create(.${format})"(controller:"recipies", parseRequest:true){
+				action = [POST:"saveRecipies"]
+			}
+			
+		
 		
 	}
 }

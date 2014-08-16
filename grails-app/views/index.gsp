@@ -19,6 +19,7 @@
 		<script src="/UseAngularInGrails/static/js/angular/ui-bootstrap-tpls-0.9.0.js"></script>
 		<script src="/UseAngularInGrails/static/js/angular/ngAutocomplete.js"></script>
 		<script src="/UseAngularInGrails/static/js/angularAppFile/app.js"></script>
+		<script src="/UseAngularInGrails/static/js/angular/angular-resource.min.js"></script>
 		<script src="/UseAngularInGrails/static/js/angularControllers/frontPageDataController.js"></script>
 		<script src="/UseAngularInGrails/static/js/angularServices/frontPageDataService.js"></script>
 	</head>

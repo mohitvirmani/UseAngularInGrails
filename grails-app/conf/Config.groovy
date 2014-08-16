@@ -93,6 +93,7 @@ environments {
     development {
         grails.logging.jul.usebridge = true
 		newsImageLocation = "${userHome}"+File.separator+"newsImages"
+		recipieImageLocation = "${userHome}"+File.separator+"recipieImages"
     }
     production {
         grails.logging.jul.usebridge = false
