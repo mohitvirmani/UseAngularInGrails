@@ -31,6 +31,9 @@ class UrlMappings {
 				action = [POST:"saveRecipies"]
 			}
 			
+		"/editRecipie/$id(.${format})"(controller:"recipies", parseRequest:true){
+			action = [POST:"editRecipies"]
+		}
 		
 		
 	}

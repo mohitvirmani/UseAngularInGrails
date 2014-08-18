@@ -19,6 +19,9 @@ app.config([ '$routeProvider', '$httpProvider',
 			}).when('/newRecipie', {
 				templateUrl : 'view/addRecipie.html',
 				controller : 'RecipiesPageData'
+			}).when('/editRecipie', {
+				templateUrl : 'view/editRecipie.html',
+				controller : 'RecipiesPageData'
 			}).otherwise({
 				redirectTo : '/'
 			});

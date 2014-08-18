@@ -19,6 +19,8 @@ $scope.submitNews = function(){
 	$location.path("/");
 }
 
+
+
 }]);
 
 //gets form data, and saves to database
@@ -79,6 +81,15 @@ homePage.controller('RecipiesPageData',['$scope','$http','$location',function($s
 		console.log($scope.message)
 		$location.path("/RecipieList");		
 	    }
+	$scope.recipies='';
+	$scope.editRecipie = function(id){
+		console.log("In edit")
+		$http.post('editRecipie/'+id+'.json').success(function(data) {
+			$scope.recipies = data.recipies
+			$scope.ingredientslist = data.ingredients
+			});
+		$location.path("/editRecipie");
+	}
 	}]);
 
 function uploadRecipiesRecord(){

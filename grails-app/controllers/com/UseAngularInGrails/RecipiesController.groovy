@@ -115,4 +115,15 @@ class RecipiesController {
 		respond res,[formats:['json', 'xml']];
 		return res;
 	}
+	
+	def editRecipies(){
+		log.debug params.id
+		def recipies=Recipies.findById(Long.parseLong(params.id));
+		def ingredients = Ingredients.findAllByRecipies(recipies)
+		def res = new HashMap();
+		res.ingredients=ingredients
+		res.recipies=recipies
+		respond res,[formats:['json', 'xml']];
+		return res;
+	}
 }

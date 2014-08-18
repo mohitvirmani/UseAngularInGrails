@@ -1,0 +1,175 @@
+<div style="margin-top: 50px">
+	<div class="container">
+		<div class="content">
+			<div class="panel panel-default profile-detail">
+				<div class="panel-heading">
+					<h4>New Recipie</h4>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-10">
+							<form action="" name="uploadRecipiesForm" role="form" novalidate>
+							<input type="text" name="count" id="count" style="display:none; " value="0">
+								<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Recipie Name</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="text"  required
+															name="Name" id="Name" value="{{recipies.name}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Discription About Recipie</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<textarea style="height: 100px; width: 500px" required
+															name="Discription" id="Discription">{{recipies.description}}</textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div id="appenddiv" ng-repeat="list in ingredientslist">
+									
+									<h4 class="mr-b5" >
+												<strong style="color: blue;">Recipie Ingredients:
+												<button type="button" class="btn btn-primary"
+															onclick="addRows()" >Add Ingredients</button>
+												</strong>
+											</h4>
+											<strong style="color: blue;">Ingredients {{$index+1}}:</strong>
+												<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Name:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="text" name="IName{{$index}}" id="IName{{$index}}" required value="{{list.ingredientName}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+											<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Amount:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="number" name="IAmount{{$index}}" id="IAmount{{$index}}" required value="{{list.amount}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+											<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Amount Units:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="text" name="IAmountUnits{{$index}}" id="IAmountUnits{{$index}}" required value="{{list.amountUnits}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Recipie Pics:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="file" name="photo" id="photo" required>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<button type="button" class="btn btn-primary"
+															ng-click="saveData(uploadRecipieForm)">Save Recipie</button>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+function addRows(){
+var str = '';
+var count = parseInt($("#count").val())
+str = str+'<div id="difLine_on_addpage"></div><strong style="color: blue;">Ingredients '+(count+2)+':</strong><div class="row">'
+str = str+'<div class="col-xs-12">'
+str=str+'<p class="mr-b5"><strong>Name:</strong></p>'
+str = str+'<div class="col-xs-12 col-sm-6">'
+str = str+'<div class="row">'
+str = str+'<div class="form-group">'
+str = str+'<input type="text"  required name="IName'+(count+1)+'" id="IName'+(count+1)+'">'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>' 
+str = str+'<div class="row">'
+str = str+'<div class="col-xs-12">'
+str=str+'<p class="mr-b5"><strong>Amount:</strong></p>'
+str = str+'<div class="col-xs-12 col-sm-6">'
+str = str+'<div class="row">'
+str = str+'<div class="form-group">'
+str = str+'<input type="number"  required name="IAmount'+(count+1)+'" id="IAmount'+(count+1)+'">'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>' 
+str = str+'<div class="row">'
+str = str+'<div class="col-xs-12">'
+str=str+'<p class="mr-b5"><strong>Amount Units:</strong></p>'
+str = str+'<div class="col-xs-12 col-sm-6">'
+str = str+'<div class="row">'
+str = str+'<div class="form-group">'
+str = str+'<input type="text" name="IAmountUnits'+(count+1)+'" id="IAmountUnits'+(count+1)+'" required>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>' 
+$("#count").val(count+1)
+$("#appenddiv").append(str)
+}
+</script>
