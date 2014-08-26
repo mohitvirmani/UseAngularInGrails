@@ -131,4 +131,14 @@ class HomeController {
 			}
 		}
 	}
+	
+	def downloadNewsPic(){
+		def news=News.findById(params.id)
+		log.debug news
+		def path=news.picpath
+		File pic=new File (path)
+		response.setContentType("application/octet-stream") // or or image/JPEG or text/xml or whatever type the file is
+		response.setHeader("Content-disposition", "attachment;filename=\"${news.pic}\"")
+		response.outputStream << pic.bytes
+	}
 }

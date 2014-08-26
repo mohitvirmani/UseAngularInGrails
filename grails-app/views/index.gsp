@@ -7,9 +7,10 @@
 		<link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/jasny-bootstrap.css">
 		<link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/jasny-bootstrap.min.css">
 		<link rel="stylesheet" href="/UseAngularInGrails/static/css/customStyle.css">
+		<link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/heroic-features.css">
 		<title>Use Angular In Grail</title>
 		<script src="/UseAngularInGrails/static/js/angular/bootstrap.js"></script>
-		<script src="/UseAngularInGrails/static/js/angular/jquery-1.10.2.min.js"></script>
+		<script src="/UseAngularInGrails/static/js/angular/jquery-1.11.0.js"></script>
 		<script src="/UseAngularInGrails/static/js/angular/angular-resource.js"></script>
 		<script src="/UseAngularInGrails/static/js/angular/angular.js"></script>
 		<script src="/UseAngularInGrails/static/js/angular/angular-route.js"></script>
