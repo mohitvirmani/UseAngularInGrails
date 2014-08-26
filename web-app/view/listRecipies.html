@@ -1,43 +1,59 @@
-<div style="text-align: center;margin-top: 20px;margin-left: 100px;margin-right: 20px;">
-<a href="#newRecipie" class="btn btn-primary" style="margin-top: 0px;">Add Recipie</a>
+<div
+	style="text-align: center; margin-top: 20px; margin-left: 100px; margin-right: 20px;">
+	<a href="#newRecipie" class="btn btn-primary" style="margin-top: 0px;">Add Recipe</a>
 </div>
-<div style="text-align: center;margin-top: 100px;margin-left: 20px;margin-right: 20px;border:solid black 1px;">
-<div style="float: right;margin-top: "><input type="text" placeholder="Search" ng-model="search"></div><h3>News List</h3>
-<table class="table table-bordered">
-<thead>
-<tr>
-<th>Sr. no.</th>
-<th>Recipie Name</th>
-<th>Description</th>
-<th>Ingredients</th>
-<th>View Pic</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr ng-repeat="list in recipielist | filter:search">
-<td>{{$index+1}}</td>
-<td>{{list.name}}</td>
-<td>{{list.description}}</td>
-<td><a href="" ng-click='getIngredients(list.id)'>view Ingredients List</a></td>
-<td><a href="" ng-click='changeImage(list.id,list.name)'>Picture</a></td>
-<td><a href="#editRecipie" >Edit</a>  / <a href="" ng-click="deleteRecipie(list.id)">Delete</a></td>
-</tr>
-</tbody>
-</table>
+<div
+	style="text-align: center; margin-top: 100px; margin-left: 20px; margin-right: 20px; border: solid black 1px;">
+	<div style="float: right; margin-top:">
+		<input type="text" placeholder="Search" ng-model="search">
+	</div>
+	<h3>News List</h3>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Sr. No.</th>
+				<th>Recipe Name</th>
+				<th>Description</th>
+				<th>Ingredients</th>
+				<th>View Image</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="list in recipielist | filter:search">
+				<td>{{$index+1}}</td>
+				<td>{{list.name}}</td>
+				<td>{{list.description}}</td>
+				<td><a href="" ng-click='getIngredients(list.id)'>view
+						Ingredients List</a></td>
+				<td><a href="" ng-click='changeImage(list.id,list.name)'>Picture</a></td>
+				<td>
+					<a href="#editRecipie">Edit</a>
+					 / 
+					<a href="" ng-click="deleteRecipie(list.id)">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
-<div style="width: 500px;height: 200px;margin-left: 20px;float: left;" ng-show="imageId!=''">
-<div style="height: 15px;"><h4> Recipie {{name}} Image :-</h4></div>
-<img src="/UseAngularInGrails/recipies/renderImage/{{imageId}}" style="width: 500px;height: 200px"/>
+<div
+	style="width: 500px; height: 200px; margin-left: 20px; float: left;"
+	ng-show="imageId!=''">
+	<div style="height: 15px;">
+		<h4>Recipie {{name}} Image :-</h4>
+	</div>
+	<img src="/UseAngularInGrails/recipies/renderImage/{{imageId}}"
+		style="width: 500px; height: 200px" />
 </div>
-<div  style="color:black;width: 600px;height: 300px;background-color: #BCC6CC;float:left;overflow: scroll;" ng-show="ingredientslist.length != 0">
-<div ng-repeat="list in ingredientslist">
-<h4>Ingredients {{$index+1}}:-</h4>
-<p>Ingredient Name :-{{list.ingredientName}}</p>
-<p>Amount :-{{list.amount}}</p>
-<p>Amount Units :-{{list.amountUnits}}</p>
-</div>
+<div
+	style="color: black; width: 600px; height: 300px; background-color: #BCC6CC; float: left; overflow: scroll;"
+	ng-show="ingredientslist.length != 0">
+	<div ng-repeat="list in ingredientslist">
+		<h4>Ingredients {{$index+1}}:-</h4>
+		<p>Ingredient Name :-{{list.ingredientName}}</p>
+		<p>Amount :-{{list.amount}}</p>
+		<p>Amount Units :-{{list.amountUnits}}</p>
+	</div>
 </div>
 
 
