@@ -25,7 +25,8 @@ class RecipiesController {
 	}
 
 	def saveRecipies(){
-		log.debug params
+		log.debug "saveRecipes started"
+		log.debug "params " + params
 		def res = new HashMap()
 		if(params){
 			def count =Integer.parseInt(params.count)

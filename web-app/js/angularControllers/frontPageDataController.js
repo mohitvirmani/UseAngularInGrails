@@ -7,16 +7,19 @@ var homePage = angular.module('useAngular');
 			// new function 'getAllNews()' created in the homePageData
 			// controller
 			$scope.userList = '';
-			$scope.news = '';
+			$scope.news = [];
 			
 			//New function created in homePageData controller, named getAllNews
 			$scope.getAllNews = function() {
 				//Calling the function getAllNews from the newsServices, which returns 
 					//data on success, which is saved in scope
 				newsServices.getAllNews().success(function(data) {
+					console.log('data ' + data);
 					$scope.news = data.news
+					console.log('$scope.news ' + $scope.news);
 				})
 			}
+			
 			$scope.getAllNews();
 
 			// new function created, to add new news to the database
@@ -29,6 +32,7 @@ var homePage = angular.module('useAngular');
 
 // gets form data, and saves to database
 function uploadNewsRecord() {
+	console.log('uploadNewsRecord started');
 	var formdata = new FormData(document.forms.namedItem("uploadNewsForm"));
 
 	$.ajax({
@@ -151,11 +155,12 @@ homePage.controller('RecipiesPageData', [
 //jQuery used instead of Angular
 //TODO : look into form submission issues in Angular 
 function uploadRecipiesRecord() {
+	console.log('uploadrecipedRecord created');
 	var formdata = new FormData(document.forms.namedItem("uploadRecipiesForm"));
 	var status
 	$.ajax({
 		url : 'recipies/create.json',
-		type : 'POST',// dont use get request
+		type : 'POST',// don't use get request
 		data : formdata,
 		processData : false,
 		contentType : false,
