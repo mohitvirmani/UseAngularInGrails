@@ -40,14 +40,15 @@
 											</div>
 										</div>
 									</div>
-									<div id="appenddiv" ng-repeat="list in ingredientslist">
 									
+									 <div id="appenddiv" ng-repeat="list in ingredientslist">
 									<h4 class="mr-b5" >
 												<strong style="color: blue;">Recipie Ingredients:
 												<button type="button" class="btn btn-primary"
 															onclick="addRows()" >Add Ingredients</button>
 												</strong>
 											</h4>
+							         
 											<strong style="color: blue;">Ingredients {{$index+1}}:</strong>
 												<div class="row">
 										<div class="col-xs-12">
@@ -133,7 +134,7 @@
 function addRows(){
 var str = '';
 var count = parseInt($("#count").val())
-str = str+'<div id="difLine_on_addpage"></div><strong style="color: blue;">Ingredients '+(count+2)+':</strong><div class="row">'
+str = str+'<div style="height: 10px;width: 580px;background-color:blue;"></div><strong style="color: blue;">Ingredients '+(count+2)+':</strong><div class="row">'
 str = str+'<div class="col-xs-12">'
 str=str+'<p class="mr-b5"><strong>Name:</strong></p>'
 str = str+'<div class="col-xs-12 col-sm-6">'

@@ -1,157 +1,238 @@
-<div style="text-align: center;margin-top: 20px;margin-left: 100px;margin-right: 20px;">
-<a href="#newRecipie" class="btn btn-primary" style="margin-top: 0px;">Add Recipie</a>
+<div
+	style="text-align: center; margin-top: 20px; margin-left: 100px; margin-right: 20px;">
+	<a href="#newRecipie" class="btn btn-primary" style="margin-top: 0px;">Add
+		Recipie</a>
 </div>
-<div style="text-align: center;margin-top: 100px;margin-left: 20px;margin-right: 20px;border:solid black 1px;">
-<div style="float: right;margin-top: "><input type="text" placeholder="Search" ng-model="search"></div><h3>News List</h3>
-<table class="table table-bordered">
-<thead>
-<tr>
-<th>Sr. no.</th>
-<th>Recipie Name</th>
-<th>Description</th>
-<th>Ingredients</th>
-<th>View Pic</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr ng-repeat="list in recipielist | filter:search">
-<td>{{$index+1}}</td>
-<td>{{list.name}}</td>
-<td>{{list.description}}</td>
-<td><a href="" ng-click='getIngredients(list.id)'>view Ingredients List</a></td>
-<td><a href="" ng-click='changeImage(list.id,list.name)'>Picture</a></td>
-<td><a href="#editRecipie" >Edit</a>  / <a href="" ng-click="deleteRecipie(list.id)">Delete</a></td>
-</tr>
-</tbody>
-</table>
+<div
+	style="text-align: center; margin-top: 100px; margin-left: 20px; margin-right: 20px; border: solid black 1px;">
+	<div style="float: right; margin-top:">
+		<input type="text" placeholder="Search" ng-model="search">
+	</div>
+	<h3>News List</h3>
+	<table class="table table-bordered">
+		<thead>
+			<tr>
+				<th>Sr. no.</th>
+				<th>Recipie Name</th>
+				<th>Description</th>
+				<th>Ingredients</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="list in recipielist | filter:search">
+				<td>{{$index+1}}</td>
+				<td>{{list.name}}</td>
+				<td>{{list.description}}</td>
+				<td><a href="" ng-click='getIngredients(list.id,list.name)'>view
+						Ingredients List And Pic</a></td>
+				<td><a href="" ng-click="editRecipie(list.id)">Edit</a> / <a
+					href="" ng-click="deleteRecipie(list.id)">Delete</a></td>
+			</tr>
+		</tbody>
+	</table>
 </div>
 
-<div style="width: 500px;height: 200px;margin-left: 20px;float: left;" ng-show="imageId!=''">
-<div style="height: 15px;"><h4> Recipie {{name}} Image :-</h4></div>
-<img src="/UseAngularInGrails/recipies/renderImage/{{imageId}}" style="width: 500px;height: 200px"/>
+<div
+	style="width: 500px; height: 200px; margin-left: 20px; float: left;"
+	ng-show="imageId!=''">
+	<div style="height: 15px;">
+		<h4>Recipie {{name}} Image :-</h4>
+	</div>
+	<img src="/UseAngularInGrails/recipies/renderImage/{{imageId}}"
+		style="width: 500px; height: 200px" />
 </div>
-<div  style="color:black;width: 600px;height: 300px;background-color: #BCC6CC;float:left;overflow: scroll;" ng-show="ingredientslist.length != 0">
-<div ng-repeat="list in ingredientslist">
-<h4>Ingredients {{$index+1}}:-</h4>
-<p>Ingredient Name :-{{list.ingredientName}}</p>
-<p>Amount :-{{list.amount}}</p>
-<p>Amount Units :-{{list.amountUnits}}</p>
-</div>
+<div
+	style="color: black; width: 600px; height: 300px; background-color: #BCC6CC; float: left; overflow: scroll;"
+	ng-show="ingredientslist.length != 0">
+	<div ng-repeat="list in ingredientslist">
+		<h4>Ingredients {{$index+1}}:-</h4>
+		<p>Ingredient Name :-{{list.ingredientName}}</p>
+		<p>Amount :-{{list.amount}}</p>
+		<p>Amount Units :-{{list.amountUnits}}</p>
+	</div>
 </div>
 
 
 
 <script type="text/ng-template" id="editTemplates.html">
-	<div class="modal-header">
-		<button type="button" class="close" ng-click="formCancel()">&times;</button>
-		<h4 class="modal-title" id="deleteModalLabel">{{clientModel.heading}}</h4>
-	</div>
-	<div class="modal-body">
-    <div align="center" class="text-danger" ng-show="alertModel.isError">{{alertModel.message}}<br/><br/></div>
-		<form action=""  name="clientsform" role="form" novalidate>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<input type="text" class="form-control" required
-															name="company" placeholder="Client"
-															ng-model="client.company">
-							</div>
+	<div style="margin-top: 50px">
+	
+		<div class="content">
+			<div class="panel panel-default profile-detail">
+				<div class="panel-heading">
+					<h4>New Recipie</h4>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-xs-12 col-sm-10">
+							<form action="" name="editRecipiesForm" role="form" novalidate>
+							<input type="text" name="count" id="count" style="display:none; " value="0">
+								<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Recipie Name</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="text"  required
+															name="Name" id="Name" value="{{recipie.name}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Discription About Recipie</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<textarea style="height: 100px; width: 500px" required
+															name="Discription" id="Discription">{{recipie.description}}</textarea>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									
+									<div id="appenddiv" ng-repeat="list in ingredientslist">
+									<h4 class="mr-b5" ng-show="$index==0">
+												<strong style="color: blue;">Recipie Ingredients:
+												<button type="button" class="btn btn-primary"
+															onclick="addRows()" >Add Ingredients</button>
+												</strong>
+											</h4>
+                                    
+											<strong style="color: blue;">Ingredients {{$index+1}}:</strong>
+												<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Name:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="text" name="IName{{$index}}" id="IName{{$index}}" required value="{{list.ingredientName}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+											<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Amount:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="number" name="IAmount{{$index}}" id="IAmount{{$index}}" required value="{{list.amount}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+											<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Amount Units:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<input type="text" name="IAmountUnits{{$index}}" id="IAmountUnits{{$index}}" required value="{{list.amountUnits}}">
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									</div>
+
+									<div class="row">
+										<div class="col-xs-12">
+											<p class="mr-b5">
+												<strong>Recipie Pics:</strong>
+											</p>
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+<div class="form-group">
+														<input type="file" name="photo" id="photo" required>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="col-xs-12 col-sm-6">
+												<div class="row">
+													<div class="form-group">
+														<button type="button" class="btn btn-primary"
+															ng-click="saveEdit(editRecipiesForm)">Save Recipie</button>
+
+													</div>
+												</div>
+											</div>
+										</div>
+									
+							</form>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<select class="form-control" name="location" ng-model="client.location" required ng-options = "location as location.name for location in cityList">
-									<option  value="">Select Location</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<input type="text" class="form-control" ng-model="client.name" name="name" placeholder="Contact Person Name" required>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<select class="form-control" name="designation" ng-model="client.designation" required ng-options = "designation as designation.name for designation in designationList">
-									<option  value="">Select Designation</option>
-								</select>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<input type="text" class="form-control" ng-model="client.username" name="mobile" placeholder="Mobile" ng-pattern="/^[0-9]{10}$/" required>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<input type="email" class="form-control" ng-model="client.email" name="email" placeholder="Email" required>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<input type="text" class="form-control" ng-model="client.birthDay" name="birthDay" required jqdatepicker1>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-xs-12">
-					<div class="col-xs-12">
-						<div class="row">
-							<div class="form-group">
-								<select class="form-control" name="alert" ng-model="client.alert" required>
-			        				<option value="">Alerts</option>
-			        				<option value="Yes">Yes</option>
-									<option value="No">No</option>
-			        			</select>							
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</form>
-	</div>
-	<div class="modal-footer">
-		<button class="btn btn-link" ng-click="formCancel()" ng-show="!alertModel.isWorkInProgress">Cancel</button>
-		<button type="button" class="btn btn-primary"  ng-click="insertClient(clientsform)" ng-disabled="alertModel.isWorkInProgress">{{alertModel.submitButton}}</button>
- 	</div>
+
+		</div>
+	
+</div>
+
+</script>
+
+<script type="text/javascript">
+function addRows(){
+var str = '';
+var count = parseInt($("#count").val())
+str = str+'<div style="height: 10px;width: 580px;background-color:blue;"></div><strong style="color: blue;">Ingredients '+(count+2)+':</strong><div class="row">'
+str = str+'<div class="col-xs-12">'
+str=str+'<p class="mr-b5"><strong>Name:</strong></p>'
+str = str+'<div class="col-xs-12 col-sm-6">'
+str = str+'<div class="row">'
+str = str+'<div class="form-group">'
+str = str+'<input type="text"  required name="IName'+(count+1)+'" id="IName'+(count+1)+'">'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>' 
+str = str+'<div class="row">'
+str = str+'<div class="col-xs-12">'
+str=str+'<p class="mr-b5"><strong>Amount:</strong></p>'
+str = str+'<div class="col-xs-12 col-sm-6">'
+str = str+'<div class="row">'
+str = str+'<div class="form-group">'
+str = str+'<input type="number"  required name="IAmount'+(count+1)+'" id="IAmount'+(count+1)+'">'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>' 
+str = str+'<div class="row">'
+str = str+'<div class="col-xs-12">'
+str=str+'<p class="mr-b5"><strong>Amount Units:</strong></p>'
+str = str+'<div class="col-xs-12 col-sm-6">'
+str = str+'<div class="row">'
+str = str+'<div class="form-group">'
+str = str+'<input type="text" name="IAmountUnits'+(count+1)+'" id="IAmountUnits'+(count+1)+'" required>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>'
+str = str+'</div>' 
+$("#count").val(count+1)
+$("#appenddiv").append(str)
+}
 </script>
