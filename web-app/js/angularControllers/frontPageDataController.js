@@ -20,7 +20,7 @@ homePage.controller('homePageData', [ '$scope', '$http', '$location',
 			}
 			$scope.getAllNews();
 
-			// new function created, to add new news to the database
+			// new function created, submitNews, to add new news to the database
 			$scope.submitNews = function() {
 				var res = uploadNewsRecord();
 				$location.path("/");
@@ -63,7 +63,7 @@ homePage.controller('RecipiesPageData', [
 			$scope.ingredientslist = '';
 			$scope.recipies = '';
 
-			// To get list of recipies
+			// getRecipeList() : To get list of recipes
 			$scope.getRecipielist = function() {
 				recipiesServices.getAllRecipies().success(function(data) {
 					$scope.recipielist = data.recipielist;
@@ -76,14 +76,14 @@ homePage.controller('RecipiesPageData', [
 				});
 			}
 
-			// To save recipies
+			// saveData() : To save recipies
 			$scope.saveData = function(uploadRecipiesForm) {
 				$scope.message = uploadRecipiesRecord()
 				console.log($scope.message)
 				$location.path("/RecipieList");
 			}
 
-			// delete recipies from list
+			// deleteRecipe() : delete recipies from list
 			$scope.deleteRecipie = function(id) {
 				recipiesServices.deleteRecipie(id).success(function(data) {
 					$scope.removeRecipieFromTable(id)
@@ -98,7 +98,7 @@ homePage.controller('RecipiesPageData', [
 
 			}
 
-			// remove tr that are deleted form DB in but not on client side
+			// removeRecipeFromTable() : remove tr that are deleted form DB in but not on client side
 			$scope.removeRecipieFromTable = function(id) {
 				for (i = 0; i < $scope.recipielist.length; i++) {
 					if ($scope.recipielist[i].id == id) {
@@ -117,8 +117,7 @@ homePage.controller('RecipiesPageData', [
 				$scope.name = name;
 			}
 
-			// Get ingredients of recipies when you click on viewingredients
-			// Link
+			// getIngredients() : of recipies when you click on viewIngredients Link
 			$scope.getIngredients = function(id, name) {
 				$http.get('getIngredientslist/' + id + '.json').success(
 						function(data) {
@@ -129,6 +128,7 @@ homePage.controller('RecipiesPageData', [
 
 			$scope.getRecipielist();
 
+			//editRecipe()
 			$scope.editRecipie = function(id) {
 				console.log("In edit")
 				var editModal = $modal.open({
@@ -143,6 +143,7 @@ homePage.controller('RecipiesPageData', [
 				});
 			};
 
+			//getRecipeFromRecipes()
 			$scope.getRecipieFromRecipies = function(id) {
 				for (i = 0; i < $scope.recipielist.length; i++) {
 					if ($scope.recipielist[i].id == prospectId) {
@@ -152,6 +153,8 @@ homePage.controller('RecipiesPageData', [
 			};
 		} ]);
 
+//jQuery used instead of Angular
+//TODO : look into form submission issues in Angular 
 function uploadRecipiesRecord() {
 	var formdata = new FormData(document.forms.namedItem("uploadRecipiesForm"));
 	var status
