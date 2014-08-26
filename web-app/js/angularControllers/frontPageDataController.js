@@ -28,12 +28,21 @@ var homePage = angular.module('useAngular');
 				$location.path("/");
 			}
 			
-//			$scope.editNews = function(id){
-//				newsServices.editNews(id).success(function(data) {
-//					console.log(data.message)
-//				});
-//			};
-//			
+			$scope.editNews = function(id) {
+				console.log("editRecipe started");
+				console.log("id " + id)
+				var editModal = $modal.open({
+					templateUrl : 'editNewsTemplate.html',
+					controller : 'homePageData',
+					scope : $scope,
+					resolve : {
+						id : function() {
+							return id;
+						}
+					}
+				});
+			};
+			
 			$scope.deleteNews = function(id){
 				console.log('delete news function called');
 				console.log("id " + id);
