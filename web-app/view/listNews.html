@@ -24,11 +24,13 @@
 			</thead>
 			<tbody>
 				<tr ng-repeat="n in news | filter:search ">
-					<td>{{$index+1}}</td>
+					<td>{{$index + 1 }}</td>
 					<td>{{n.heading}}</td>
 					<td>{{n.descripton}}</td>
 					<td><a href="">{{n.pic}}</a></td>
-					<td><a href="">Edit</a> / <a href="">Delete</a></td>
+					<td><a href="" ng-click="editNews(n.id)">Edit</a>
+					 / 
+					 <a href="" ng-click="deleteNews(n.id)">Delete</a></td>
 				</tr>
 			</tbody>
 		</table>

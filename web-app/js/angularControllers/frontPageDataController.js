@@ -27,6 +27,33 @@ var homePage = angular.module('useAngular');
 				var res = uploadNewsRecord();
 				$location.path("/");
 			}
+			
+//			$scope.editNews = function(id){
+//				newsServices.editNews(id).success(function(data) {
+//					console.log(data.message)
+//				});
+//			};
+//			
+			$scope.deleteNews = function(id){
+				console.log('delete news function called');
+				console.log("id " + id);
+				newsServices.deleteNews(id).success(function(data) {
+					$scope.removeNewsFromTable(id)
+					console.log(data.message)
+				});
+			};
+			
+			// removeRecipeFromTable() : Hide the deleted row from table and also remove the entry from DB
+			$scope.removeNewsFromTable = function(id) {
+				console.log("removeNewsFromTable started");
+				for (i = 0; i < $scope.news.length; i++) {
+					if ($scope.news[i].id == id) {
+						console.log("iterate " + i)
+						$scope.news.splice($scope.news.indexOf($scope.news[i]), 1);
+						break;
+					}
+				}
+			};
 	}]);
 
 // gets form data, and saves to database

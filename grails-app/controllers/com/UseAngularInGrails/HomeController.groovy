@@ -42,7 +42,7 @@ class HomeController {
 			res.status="fails"
 			res.message="No News list are coming"
 		}
-
+		
 		respond res,[formats:['json', 'xml']];
 		return res
 	}
@@ -130,5 +130,16 @@ class HomeController {
 				response.outputStream.write(buffer)
 			}
 		}
+	}
+	
+	def deleteNews(){
+		log.debug "params " + params
+		News news = News.findById(params.id)
+		log.debug "news " + news
+		news.delete(failOnError : true)
+		def res = new HashMap()
+		res.message = "Success"
+		respond res,[formats:['json', 'xml']];
+		return res;
 	}
 }

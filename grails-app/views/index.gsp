@@ -2,7 +2,7 @@
 <html ng-app="useAngular">
 <!-- This module directs the view to fetch the details from app.js, redirected to app.js -->
 	<head>
-		
+		<!-- TODO : grails upgrade, use asset pipeline, and also use layout, no loading of js using srcipt -->
 	    <link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/bootstrap.css">
 		<link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/jasny-bootstrap.css">
 		<link rel="stylesheet" href="/UseAngularInGrails/static/css/bootstrap/jasny-bootstrap.min.css">
