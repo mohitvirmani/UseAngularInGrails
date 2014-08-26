@@ -115,7 +115,7 @@ class HomeController {
 
 	def renderImage(){
 		log.debug "=="+params.id+"=="
-		if(params?.id != "{{imageId}}" && params?.id != null && params?.id != ""){
+		if(params?.id != "{{n" && params?.id != null && params?.id != ""){
 		def news=News.findById(Long.parseLong(params.id));
 		File imageFile=new File(news.picpath)
 		if(imageFile.exists()){
