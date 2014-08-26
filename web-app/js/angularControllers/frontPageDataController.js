@@ -7,8 +7,7 @@ var homePage = angular.module('useAngular');
 			// new function 'getAllNews()' created in the homePageData
 			// controller
 			$scope.userList = '';
-			$scope.news = [];
-			
+			$scope.news = '';
 			//New function created in homePageData controller, named getAllNews
 			$scope.getAllNews = function() {
 				//Calling the function getAllNews from the newsServices, which returns 
@@ -16,7 +15,7 @@ var homePage = angular.module('useAngular');
 				newsServices.getAllNews().success(function(data) {
 					console.log('data ' + data);
 					$scope.news = data.news
-					console.log('$scope.news ' + $scope.news);
+					console.log('$scope.news ' + data.news[0].heading);
 				})
 			}
 			
