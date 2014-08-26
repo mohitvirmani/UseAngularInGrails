@@ -26,7 +26,6 @@ var homePage = angular.module('useAngular');
 				var res = uploadNewsRecord();
 				$location.path("/");
 			}
-
 	}]);
 
 // gets form data, and saves to database
