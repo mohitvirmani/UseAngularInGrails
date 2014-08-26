@@ -20,6 +20,7 @@ var homePage = angular.module('useAngular');
 				})
 			}
 			
+			//Called on enter to show the news on home page
 			$scope.getAllNews();
 
 			// new function created, to add new news to the database
@@ -32,8 +33,12 @@ var homePage = angular.module('useAngular');
 // gets form data, and saves to database
 function uploadNewsRecord() {
 	console.log('uploadNewsRecord started');
+	//Get form data
 	var formdata = new FormData(document.forms.namedItem("uploadNewsForm"));
 
+	//AJAX call to save the form data in DB
+	//data posted to the below URL which has been mapped to an action in home controller
+	//The action receives the JSON in params and parses those to save in DB.
 	$.ajax({
 		url : 'uploadNews/record.json',
 		type : 'POST',
@@ -52,7 +57,7 @@ function uploadNewsRecord() {
 	});
 }
 
-// Recipeis controller
+// New Controller created : Recipes controller
 homePage.controller('RecipiesPageData', [
 		'$scope',
 		'$http',
