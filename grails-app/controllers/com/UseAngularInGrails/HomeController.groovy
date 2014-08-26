@@ -116,19 +116,19 @@ class HomeController {
 	def renderImage(){
 		log.debug "=="+params.id+"=="
 		if(params?.id != "{{n" && params?.id != null && params?.id != ""){
-		def news=News.findById(Long.parseLong(params.id));
-		File imageFile=new File(news.picpath)
-		if(imageFile.exists()){
-			byte[] buffer=new FileInputStream(imageFile).getBytes()
-			response.setContentLength(buffer.length)
-			response.outputStream.write(buffer)
-		}
-		else{
-			imageFile=new File("/home/mohit/Desktop/koshishkkdk.jpg")
-			byte[] buffer=new FileInputStream(imageFile).getBytes()
-			response.setContentLength(buffer.length)
-			response.outputStream.write(buffer)
-		}
+			def news=News.findById(Long.parseLong(params.id));
+			File imageFile=new File(news.picpath)
+			if(imageFile.exists()){
+				byte[] buffer=new FileInputStream(imageFile).getBytes()
+				response.setContentLength(buffer.length)
+				response.outputStream.write(buffer)
+			}
+			else{
+				imageFile=new File("/home/mohit/Desktop/koshishkkdk.jpg")
+				byte[] buffer=new FileInputStream(imageFile).getBytes()
+				response.setContentLength(buffer.length)
+				response.outputStream.write(buffer)
+			}
 		}
 	}
 }
