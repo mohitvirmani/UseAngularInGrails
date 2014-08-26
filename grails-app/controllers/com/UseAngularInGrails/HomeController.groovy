@@ -8,6 +8,7 @@ class HomeController {
 
 	//First hit, index page, redirected to index.gsp view
 	def index() {
+		log.debug "index started"
 	}
 	
 	def list(){
@@ -116,6 +117,12 @@ class HomeController {
 		def news=News.findById(Long.parseLong(params.id));
 		File imageFile=new File(news.picpath)
 		if(imageFile.exists()){
+			byte[] buffer=new FileInputStream(imageFile).getBytes()
+			response.setContentLength(buffer.length)
+			response.outputStream.write(buffer)
+		}
+		else{
+			imageFile=new File("/home/mohit/Desktop/koshishkkdk.jpg")
 			byte[] buffer=new FileInputStream(imageFile).getBytes()
 			response.setContentLength(buffer.length)
 			response.outputStream.write(buffer)
