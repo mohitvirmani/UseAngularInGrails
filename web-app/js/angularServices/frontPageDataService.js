@@ -15,6 +15,27 @@ homePage.service('newsServices', function($http) {
 			url : 'home/getAllNews'
 		});
 	}
+	
+//	newsListAPI.editNews = function(id) {
+//		//call made to action:getAllNews, controller : home
+//		//HashMap returned by action, set to newsListAPI
+//		return $http({
+//			method : 'POST',
+//			url : 'home/editNews?id=' + id
+//		});
+//	}
+	
+	newsListAPI.deleteNews = function(id) {
+		//call made to action:getAllNews, controller : home
+		//HashMap returned by action, set to newsListAPI
+		console.log("deleteNews service started");
+		console.log("id " + id);
+		return $http({
+			method : 'POST',
+			url : 'home/deleteNews?id=' + id
+		});
+	}
+	
 	console.log('newsListAPI second' + newsListAPI);
 	return newsListAPI;
 });

@@ -5,31 +5,38 @@
 <title>Use Angular In Grails</title>
 </head>
 <body>
+
   <div ng-include src="'view/header.html'"></div>
 <div style="text-align: center;margin-top: 100px;margin-left: 20px;margin-right: 20px;border:solid black 1px;">
-
-<div style="float: right;margin-top: "><input type="text" placeholder="Search" ng-model="search"></div><h3>News List</h3>
-<table class="table table-bordered">
-<thead>
-<tr>
-<th>Sr. no.</th>
-<th>News Heading</th>
-<th>News Description</th>
-<th>News Pic</th>
-<th>Action</th>
-</tr>
-</thead>
-<tbody>
-<tr ng-repeat="n in news | filter:search ">
-<td>{{$index+1}}</td>
-<td>{{n.heading}}</td>
-<td>{{n.descripton}}</td>
-<td><a href="">{{n.pic}}</a></td>
-<td><a href="">Edit</a>  /  <a href="">Delete</a></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div style="text-align: center;"><a href="#" class="btn btn-primary" style="margin-top: 100px">Back</a></div>
+		<div style="float: right; margin-top:">
+			<input type="text" placeholder="Search" ng-model="search">
+		</div>
+		<h3>News List</h3>
+		<table class="table table-bordered">
+			<thead>
+				<tr>
+					<th>Sr. no.</th>
+					<th>Heading</th>
+					<th>Description</th>
+					<th>Image</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="n in news | filter:search ">
+					<td>{{$index + 1 }}</td>
+					<td>{{n.heading}}</td>
+					<td>{{n.descripton}}</td>
+					<td><a href="">{{n.pic}}</a></td>
+					<td><a href="" ng-click="editNews(n.id)">Edit</a>
+					 / 
+					 <a href="" ng-click="deleteNews(n.id)">Delete</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div style="text-align: center;">
+		<a href="#" class="btn btn-primary" style="margin-top: 100px">Back</a>
+	</div>
 </body>
 </html>

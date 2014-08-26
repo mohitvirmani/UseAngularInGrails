@@ -19,6 +19,7 @@ var homePage = angular.module('useAngular');
 				})
 			}
 			
+			//Called on enter to show the news on home page
 			$scope.getAllNews();
 
 			// new function created, to add new news to the database
@@ -26,13 +27,44 @@ var homePage = angular.module('useAngular');
 				var res = uploadNewsRecord();
 				$location.path("/");
 			}
+			
+//			$scope.editNews = function(id){
+//				newsServices.editNews(id).success(function(data) {
+//					console.log(data.message)
+//				});
+//			};
+//			
+			$scope.deleteNews = function(id){
+				console.log('delete news function called');
+				console.log("id " + id);
+				newsServices.deleteNews(id).success(function(data) {
+					$scope.removeNewsFromTable(id)
+					console.log(data.message)
+				});
+			};
+			
+			// removeRecipeFromTable() : Hide the deleted row from table and also remove the entry from DB
+			$scope.removeNewsFromTable = function(id) {
+				console.log("removeNewsFromTable started");
+				for (i = 0; i < $scope.news.length; i++) {
+					if ($scope.news[i].id == id) {
+						console.log("iterate " + i)
+						$scope.news.splice($scope.news.indexOf($scope.news[i]), 1);
+						break;
+					}
+				}
+			};
 	}]);
 
 // gets form data, and saves to database
 function uploadNewsRecord() {
 	console.log('uploadNewsRecord started');
+	//Get form data
 	var formdata = new FormData(document.forms.namedItem("uploadNewsForm"));
 
+	//AJAX call to save the form data in DB
+	//data posted to the below URL which has been mapped to an action in home controller
+	//The action receives the JSON in params and parses those to save in DB.
 	$.ajax({
 		url : 'uploadNews/record.json',
 		type : 'POST',
@@ -51,7 +83,7 @@ function uploadNewsRecord() {
 	});
 }
 
-// Recipeis controller
+// New Controller created : Recipes controller
 homePage.controller('RecipiesPageData', [
 		'$scope',
 		'$http',
