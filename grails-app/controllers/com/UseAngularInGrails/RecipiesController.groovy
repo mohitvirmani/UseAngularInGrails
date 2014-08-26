@@ -101,7 +101,8 @@ class RecipiesController {
 
 
 	def renderImage(){
-		if(params?.id){
+		log.debug "=="+params.id+"=="
+		if(params?.id != "{{imageId}}" && params?.id != null && params?.id != ""){
 			def recipies=Recipies.findById(Long.parseLong(params.id));
 			log.debug recipies
 			File imageFile=new File(recipies.picpath)
