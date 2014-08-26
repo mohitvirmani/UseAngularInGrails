@@ -1,5 +1,5 @@
 //creates a new module named useAngular, and app.js also provides details, of the views to be rendered and controllers
-//to be used, for various URL's
+//to be used, for various URL's, ['helloApp.controllers','helloApp.services']
 var app = angular.module('useAngular', ['ngRoute','ngResource']);
 
 app.config([ '$routeProvider', '$httpProvider',
@@ -26,3 +26,10 @@ app.config([ '$routeProvider', '$httpProvider',
 				redirectTo : '/'
 			});
 		} ]);
+
+app.service('testService', function(){
+    this.sayHello= function(text){
+    	console.log("Sonu")
+        return "Service says \"Hello " + text + "\"";
+    };       
+});

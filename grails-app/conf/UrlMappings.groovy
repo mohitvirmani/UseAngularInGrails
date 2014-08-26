@@ -35,6 +35,9 @@ class UrlMappings {
 			action = [POST:"editRecipies"]
 		}
 		
+		"/deleteRecipie/$id(.${format})"(controller:"recipies", parseRequest:true){
+			action = [POST:"deleteRecipie"]
+		}
 		
 	}
 }

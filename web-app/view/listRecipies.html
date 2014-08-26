@@ -21,17 +21,17 @@
 <td>{{list.description}}</td>
 <td><a href="" ng-click='getIngredients(list.id)'>view Ingredients List</a></td>
 <td><a href="" ng-click='changeImage(list.id,list.name)'>Picture</a></td>
-<td><a href="" ng-click="editRecipie(list.id)">Edit</a>  / <a href="">Delete</a></td>
+<td><a href="#editRecipie" >Edit</a>  / <a href="" ng-click="deleteRecipie(list.id)">Delete</a></td>
 </tr>
 </tbody>
 </table>
 </div>
 
-<div style="width: 500px;height: 200px;margin-left: 20px;">
+<div style="width: 500px;height: 200px;margin-left: 20px;float: left;" ng-show="imageId!=''">
 <div style="height: 15px;"><h4> Recipie {{name}} Image :-</h4></div>
 <img src="/UseAngularInGrails/recipies/renderImage/{{imageId}}" style="width: 500px;height: 200px"/>
 </div>
-<div  style="color:black;width: 600px;height: 300px;background-color: #BCC6CC;margin-top: -186px;margin-left: 600px;overflow: scroll;	">
+<div  style="color:black;width: 600px;height: 300px;background-color: #BCC6CC;float:left;overflow: scroll;" ng-show="ingredientslist.length != 0">
 <div ng-repeat="list in ingredientslist">
 <h4>Ingredients {{$index+1}}:-</h4>
 <p>Ingredient Name :-{{list.ingredientName}}</p>
@@ -40,3 +40,118 @@
 </div>
 </div>
 
+
+
+<script type="text/ng-template" id="editTemplates.html">
+	<div class="modal-header">
+		<button type="button" class="close" ng-click="formCancel()">&times;</button>
+		<h4 class="modal-title" id="deleteModalLabel">{{clientModel.heading}}</h4>
+	</div>
+	<div class="modal-body">
+    <div align="center" class="text-danger" ng-show="alertModel.isError">{{alertModel.message}}<br/><br/></div>
+		<form action=""  name="clientsform" role="form" novalidate>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<input type="text" class="form-control" required
+															name="company" placeholder="Client"
+															ng-model="client.company">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<select class="form-control" name="location" ng-model="client.location" required ng-options = "location as location.name for location in cityList">
+									<option  value="">Select Location</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="client.name" name="name" placeholder="Contact Person Name" required>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<select class="form-control" name="designation" ng-model="client.designation" required ng-options = "designation as designation.name for designation in designationList">
+									<option  value="">Select Designation</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="client.username" name="mobile" placeholder="Mobile" ng-pattern="/^[0-9]{10}$/" required>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<input type="email" class="form-control" ng-model="client.email" name="email" placeholder="Email" required>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<input type="text" class="form-control" ng-model="client.birthDay" name="birthDay" required jqdatepicker1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="form-group">
+								<select class="form-control" name="alert" ng-model="client.alert" required>
+			        				<option value="">Alerts</option>
+			        				<option value="Yes">Yes</option>
+									<option value="No">No</option>
+			        			</select>							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-link" ng-click="formCancel()" ng-show="!alertModel.isWorkInProgress">Cancel</button>
+		<button type="button" class="btn btn-primary"  ng-click="insertClient(clientsform)" ng-disabled="alertModel.isWorkInProgress">{{alertModel.submitButton}}</button>
+ 	</div>
+</script>

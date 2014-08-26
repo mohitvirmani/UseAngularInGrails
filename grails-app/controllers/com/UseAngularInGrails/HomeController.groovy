@@ -1,5 +1,7 @@
 package com.UseAngularInGrails
 
+import grails.converters.JSON
+
 class HomeController {
 
 	static allowedMethods = [getAllNews: "GET"]
@@ -7,7 +9,25 @@ class HomeController {
 	//First hit, index page, redirected to index.gsp view
 	def index() {
 	}
-
+	
+	def list(){
+		println "got a hit"
+		def res = new HashMap()
+		res.message="Deepak"
+		def data = [:],data1=[:],data2=[:],data3=[:]
+		def dataarray = []
+		data.put("name", "arvind")
+		data.put("nick","89neuron")
+		dataarray.add(data)
+		data1.put("name", "kakarot")
+		data1.put("nick","kakarot +ve")
+		dataarray.add(data1)
+		data2.put("name","source it open") 
+		data2.put("nick", "SIO")
+		dataarray.add(data2)
+		render dataarray as JSON
+	}
+	
 	def getAllNews(){
 		log.debug "getAllNews started"
 		def res = new HashMap()
