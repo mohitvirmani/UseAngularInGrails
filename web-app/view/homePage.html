@@ -1,37 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<title>Use Angular In Grails</title>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Heroic Features - Start Bootstrap Template</title>
+
+    <!-- Bootstrap Core CSS -->
+<!--     <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
+    <!-- Custom CSS -->
+<!--     <link href="css/heroic-features.css" rel="stylesheet"> -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
 </head>
+
 <body>
 
-	<div id="banner">
-		<a href="#addNews" class="btn btn-primary" style="margin-top: 100px">Add News</a> 
-		<a href="#NewsList" class="btn btn-primary" style="margin-top: 100px">News List</a> 
-		<a href="#RecipieList" class="btn btn-primary" style="margin-top: 100px">List Recipes</a>
-	</div>
-	<div id="difLine"></div>
+    <!-- Navigation -->
+   <div ng-include src="'view/header.html'"></div>
+    <!-- Page Content -->
+    <div class="container">
 
-	<div ng-repeat="n in news" id="news_in_div"> 
+        <!-- Jumbotron Header -->
+        <header class="jumbotron hero-spacer">
+            <h1>A Warm Welcome!</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+            <p><a class="btn btn-primary btn-large">Call to action!</a>
+            </p>
+        </header>
 
-		<div  style="height: 100px; background-color: white;">
-			<!-- KNOWN ISSUE : The image render shows error for home page
-				at compile time, the data binding isn't performed this doesn't provide
-				ID as expected by the image src.gg
-			 -->
-			<img style="width: 316px; height: 120PX; border: 1px solid #eee;"
-				src='/UseAngularInGrails/home/renderImage/{{n.id}}' />
-		</div>
+        <hr>
 
-		<div style="width: 316px; height: 100px; background-color: white">
-			<h3 style="color: blue" >{{n.heading}}</h3>
-		</div>
+        <!-- Title -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Latest News</h3>
+            </div>
+        </div>
+        <!-- /.row -->
 
-		<div
-			style="width: 316px; height: 179px; background-color: black; color: white" >{{n.descripton}}
-		</div>
+        <!-- Page Features -->
+        <div class="row text-center">
 
-	</div>
+            <div class="col-md-3 col-sm-6 hero-feature" ng-repeat="n in news" >
+                <div class="thumbnail">
+                    <img src="/UseAngularInGrails/home/renderImage/{{n.id}}" alt="" style="height: 100px;width: 300px">
+                    <div class="caption">
+                        <h3>{{n.heading}}</h3>
+                        <p>{{n.descripton}}</p>
+                        <p>
+                            <a href="/UseAngularInGrails/home/downloadNewsPic/{{n.id}}" class="btn btn-primary">Download Pic!</a> <a href="#" class="btn btn-default">More Info</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+           
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+        <!-- Footer -->
+        <footer>
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; Your Website 2014</p>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.container -->
+
+    <!-- jQuery Version 1.11.0 -->
+<!--     <script src="js/jquery-1.11.0.js"></script> -->
+
+    <!-- Bootstrap Core JavaScript -->
+<!--     <script src="js/bootstrap.min.js"></script> -->
+
 </body>
+
 </html>

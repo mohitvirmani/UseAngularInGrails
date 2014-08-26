@@ -11,23 +11,6 @@ class HomeController {
 		log.debug "index started"
 	}
 	
-	def list(){
-		println "got a hit"
-		def res = new HashMap()
-		res.message="Deepak"
-		def data = [:],data1=[:],data2=[:],data3=[:]
-		def dataarray = []
-		data.put("name", "arvind")
-		data.put("nick","89neuron")
-		dataarray.add(data)
-		data1.put("name", "kakarot")
-		data1.put("nick","kakarot +ve")
-		dataarray.add(data1)
-		data2.put("name","source it open") 
-		data2.put("nick", "SIO")
-		dataarray.add(data2)
-		render dataarray as JSON
-	}
 	
 	def getAllNews(){
 		log.debug "getAllNews started"
@@ -132,6 +115,16 @@ class HomeController {
 		}
 	}
 	
+
+	def downloadNewsPic(){
+		def news=News.findById(params.id)
+		log.debug news
+		def path=news.picpath
+		File pic=new File (path)
+		response.setContentType("application/octet-stream") // or or image/JPEG or text/xml or whatever type the file is
+		response.setHeader("Content-disposition", "attachment;filename=\"${news.pic}\"")
+		response.outputStream << pic.bytes
+}
 	def deleteNews(){
 		log.debug "params " + params
 		News news = News.findById(params.id)
@@ -142,4 +135,5 @@ class HomeController {
 		respond res,[formats:['json', 'xml']];
 		return res;
 	}
+
 }
