@@ -4,7 +4,10 @@ var homePage = angular.module('useAngular');
 homePage.service('newsServices', function($http) {
 
 	var newsListAPI = [];
+	//New function created in newsServices, getAllNews()
 	newsListAPI.getAllNews = function() {
+		//call made to action:getAllNews, controller : home
+		//HashMap returned by action, set to newsListAPI
 		return $http({
 			method : 'GET',
 			url : 'home/getAllNews'

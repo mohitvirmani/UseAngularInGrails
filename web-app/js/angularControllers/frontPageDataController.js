@@ -9,7 +9,11 @@ homePage.controller('homePageData', [ '$scope', '$http', '$location',
 			// controller
 			$scope.userList = '';
 			$scope.news = '';
+			
+			//New function created in homePageData controller, named getAllNews
 			$scope.getAllNews = function() {
+				//Calling the function getAllNews from the newsServices, which returns 
+					//data on success, which is saved in scope
 				newsServices.getAllNews().success(function(data) {
 					$scope.news = data.news
 				})

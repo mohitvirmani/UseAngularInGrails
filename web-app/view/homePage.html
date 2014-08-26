@@ -1,35 +1,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<title>Use Angular In Grails</title>
-	</head>
+<meta charset="UTF-8">
+<title>Use Angular In Grails</title>
+</head>
 <body>
 
+	<div id="banner">
+		<a href="#addNews" class="btn btn-primary" style="margin-top: 100px">Add News</a> 
+		<a href="#NewsList" class="btn btn-primary" style="margin-top: 100px">News List</a> 
+		<a href="#RecipieList" class="btn btn-primary" style="margin-top: 100px">List Recipes</a>
+	</div>
+	<div id="difLine"></div>
 
-<div id="banner">
-<a href="#addNews" class="btn btn-primary" style="margin-top: 100px">Add News</a>
-<a href="#NewsList" class="btn btn-primary" style="margin-top: 100px">News List</a>
-<a href="#RecipieList" class="btn btn-primary" style="margin-top: 100px">List Recipies</a>
-</div>
-<div id="difLine"></div>
+	<div ng-repeat="n in news" id="news_in_div">
 
-   <div ng-repeat="n in news" id="news_in_div" >
-   
-   <div style="height:100px;background-color:white;" >
-   	<img style="width: 316px; height: 120PX; border: 1px solid #eee;" src='/UseAngularInGrails/home/renderImage/{{n.id}}' />
-  </div>
-   
-   <div style="width: 316px;height: 100px;background-color: white">
-   <h3 style="color:blue ">
-   {{n.heading}}
-   </h3>
-   </div>
-   
-   <div style="width: 316px;height: 179px;background-color: black;color: white">
-   {{n.descripton}}
-   </div>
-   
-   </div>
+		<div style="height: 100px; background-color: white;">
+			<img style="width: 316px; height: 120PX; border: 1px solid #eee;"
+				src='/UseAngularInGrails/home/renderImage/{{n.id}}' />
+		</div>
+
+		<div style="width: 316px; height: 100px; background-color: white">
+			<h3 style="color: blue">{{n.heading}}</h3>
+		</div>
+
+		<div
+			style="width: 316px; height: 179px; background-color: black; color: white">{{n.descripton}}
+		</div>
+
+	</div>
 </body>
 </html>
