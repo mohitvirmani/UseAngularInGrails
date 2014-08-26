@@ -10,6 +10,7 @@ class UrlMappings {
         "/"(view:"index")
         "500"(view:'/error')
 		
+		//Home Controller
 		"/getNewslist(.${format})"(controller:"home", parseRequest:true){
 			action = [ GET:"getAllNews"]
 		}
@@ -18,7 +19,7 @@ class UrlMappings {
 			action = [ POST:"saveNews"]
 		}
 		
-		
+		//Recipe Controller
 		"/getRecipielist(.${format})"(controller:"recipies", parseRequest:true){
 			action = [ GET:"recipieslist"]
 		}

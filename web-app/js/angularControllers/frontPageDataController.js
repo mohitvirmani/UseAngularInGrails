@@ -1,19 +1,21 @@
 //Creates reference of useAngular module
 var homePage = angular.module('useAngular');
-
 // homePageData controller defined below
-homePage.controller('homePageData', [ '$scope', '$http', '$location',
-		'newsServices', function($scope, $http, $location, newsServices) {
+	homePage.controller('homePageData', [ '$scope', '$http', '$location',
+	                              		'newsServices', function($scope, $http, $location, newsServices) {
 
 			// new function 'getAllNews()' created in the homePageData
 			// controller
 			$scope.userList = '';
 			$scope.news = '';
+			
+			//New function created in homePageData controller, named getAllNews
 			$scope.getAllNews = function() {
+				//Calling the function getAllNews from the newsServices, which returns 
+					//data on success, which is saved in scope
 				newsServices.getAllNews().success(function(data) {
 					$scope.news = data.news
 				})
-
 			}
 			$scope.getAllNews();
 
@@ -23,7 +25,7 @@ homePage.controller('homePageData', [ '$scope', '$http', '$location',
 				$location.path("/");
 			}
 
-		} ]);
+	}]);
 
 // gets form data, and saves to database
 function uploadNewsRecord() {
@@ -62,7 +64,8 @@ homePage.controller('RecipiesPageData', [
 			$scope.ingredientslist = '';
 			$scope.recipies = '';
 
-			// To get list of recipies
+			// getRecipeList() : To get list of recipes
+
 			$scope.getRecipielist = function() {
 				recipiesServices.getAllRecipies().success(function(data) {
 					$scope.recipielist = data.recipielist;
@@ -75,22 +78,22 @@ homePage.controller('RecipiesPageData', [
 				});
 			}
 
-			// To save recipies
+			// saveData() : To save recipies
 			$scope.saveData = function(uploadRecipiesForm) {
 				$scope.message = uploadRecipiesRecord()
 				console.log($scope.message)
 				$location.path("/RecipieList");
 			}
 
-			// delete recipies from list
+		// deleteRecipe() : delete recipies from list
 			$scope.deleteRecipie = function(id) {
 				recipiesServices.deleteRecipie(id).success(function(data) {
 					$scope.removeRecipieFromTable(id)
 					console.log(data.message)
 				});
-			}
+				}
 
-			// remove tr that are deleted form DB in but not on client side
+			// removeRecipeFromTable() : remove tr that are deleted form DB in but not on client side
 			$scope.removeRecipieFromTable = function(id) {
 				for (i = 0; i < $scope.recipielist.length; i++) {
 					if ($scope.recipielist[i].id == id) {
@@ -109,8 +112,7 @@ homePage.controller('RecipiesPageData', [
 				$scope.name = name;
 			}
 
-			// Get ingredients of recipies when you click on viewingredients
-			// Link
+			// getIngredients() : of recipies when you click on viewIngredients Link
 			$scope.getIngredients = function(id, name) {
 				$http.get('getIngredientslist/' + id + '.json').success(
 						function(data) {
@@ -136,6 +138,7 @@ homePage.controller('RecipiesPageData', [
 				});
 			};
 
+
 			$scope.getRecipieFromRecipies = function(id) {
 				for (i = 0; i < $scope.recipielist.length; i++) {
 					if ($scope.recipielist[i].id == id) {
@@ -145,6 +148,8 @@ homePage.controller('RecipiesPageData', [
 			};
 		} ]);
 
+//jQuery used instead of Angular
+//TODO : look into form submission issues in Angular 
 function uploadRecipiesRecord() {
 	var formdata = new FormData(document.forms.namedItem("uploadRecipiesForm"));
 	var status
@@ -201,7 +206,7 @@ var editRecipieCtrl = function($scope, $modalInstance, $location, $http,
 		if(status == 'success'){
 		$modalInstance.dismiss('cancel');
 		}
-	};
+};
 	$scope.deleteCancel = function() {
 		$modalInstance.dismiss('cancel');
 	};
