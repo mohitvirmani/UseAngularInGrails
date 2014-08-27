@@ -2,10 +2,10 @@
 var homePage = angular.module('useAngular');
 // homePageData controller defined below
 	homePage.controller('homePageData', [ '$scope', '$http', '$location',
-	                              		'newsServices', function($scope, $http, $location, newsServices) {
+	                              		'newsServices','$modal',
+	                              		function($scope, $http, $location, newsServices, $modal) {
 
-			// new function 'getAllNews()' created in the homePageData
-			// controller
+			// new function 'getAllNews()' created in the homePageData controller
 			$scope.userList = '';
 			$scope.news = '';
 			//New function created in homePageData controller, named getAllNews
@@ -31,9 +31,9 @@ var homePage = angular.module('useAngular');
 			$scope.editNews = function(id) {
 				console.log("editRecipe started");
 				console.log("id " + id)
-				var editModal = $modal.open({
+				var editNewsModal = $modal.open({
 					templateUrl : 'editNewsTemplate.html',
-					controller : 'homePageData',
+					controller : 'editNewsCtrl',
 					scope : $scope,
 					resolve : {
 						id : function() {
@@ -60,6 +60,17 @@ var homePage = angular.module('useAngular');
 						console.log("iterate " + i)
 						$scope.news.splice($scope.news.indexOf($scope.news[i]), 1);
 						break;
+					}
+				}
+			};
+			
+			$scope.getNewsFromNewsList = function(id) {
+				console.log('getNewsFromNewsList started');
+				console.log( id );
+				console.log('id' + id);
+				for (i = 0; i < $scope.news.length; i++) {
+					if ($scope.news[i].id == id) {
+						return $scope.news[i];
 					}
 				}
 			};
@@ -243,6 +254,7 @@ function editRecipiesRecord(id) {
 
 var editRecipieCtrl = function($scope, $modalInstance, $location, $http,
 		$timeout, id) {
+	console.log('editRecipeCtrl started');
 	$scope.recipie = $scope.getRecipieFromRecipies(id);
 	$scope.getIngredients(id, $scope.recipie.name)
 	$scope.saveEdit = function(editRecipiesForm) {
@@ -251,6 +263,23 @@ var editRecipieCtrl = function($scope, $modalInstance, $location, $http,
 		$modalInstance.dismiss('cancel');
 		}
 };
+	$scope.deleteCancel = function() {
+		$modalInstance.dismiss('cancel');
+	};
+};
+
+var editNewsCtrl = function($scope, $modalInstance, $location, $http,
+		$timeout, id) {
+	console.log('editNewsCtrl started');
+	$scope.news = $scope.getNewsFromNewsList(id);
+	console.log($scope.news);
+	
+	$scope.saveEdit = function(editRecipiesForm) {
+		var status=editRecipiesRecord(id);
+		if(status == 'success'){
+			$modalInstance.dismiss('cancel');
+		}
+	};
 	$scope.deleteCancel = function() {
 		$modalInstance.dismiss('cancel');
 	};
