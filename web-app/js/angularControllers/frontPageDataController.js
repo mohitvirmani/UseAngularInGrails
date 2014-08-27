@@ -75,6 +75,20 @@ var homePage = angular.module('useAngular');
 				}
 			};
 			
+			$scope.moreInfo = function(newsHeading){
+				console.log('moreInfo started');
+				console.log('newsHeading ' + newsHeading);
+				newsServices.moreInfo(newsHeading).success(function(data) {
+					console.log("data.currentlySelectedNews " + data.currentlySelectedNews)
+//					$scope.updateDIVWithCurrentNews(data.currentlySelectedNews)
+					console.log("data.message " + data.message)
+				});
+			}
+			
+			$scope.updateDIVWithCurrentNews = function(currentlySelectedNews){
+				//Check how to update the current DIV with the news
+			}
+			
 	}]);
 
 // gets form data, and saves to database

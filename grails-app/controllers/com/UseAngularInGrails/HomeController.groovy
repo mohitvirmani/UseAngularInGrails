@@ -222,5 +222,20 @@ class HomeController {
 			}
 		}
 	}
+	
+	def moreInfo(){
+		log.debug "moreInfo started"
+		log.debug "params " + params
+		log.debug "params.newsHeading " + params.newsHeading
+		News currentlySelectedNews = News.findByHeading(params.newsHeading)
+		log.debug "currentlySelectedNews " + currentlySelectedNews
+		
+		def res = new HashMap()
+		res.currentlySelectedNews = currentlySelectedNews
+		res.message = "Success"
+		
+		respond res,[formats:['json', 'xml']];
+		return res;
+	}
 
 }

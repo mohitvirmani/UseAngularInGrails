@@ -36,6 +36,15 @@ homePage.service('newsServices', function($http) {
 		});
 	}
 	
+	newsListAPI.moreInfo = function(newsHeading){
+		console.log('moreInfo service started');
+		console.log('heading ' + newsHeading);
+		return $http({
+			method : 'POST',
+			url : 'home/moreInfo?newsHeading='+newsHeading
+		})
+	}
+	
 	console.log('newsListAPI second' + newsListAPI);
 	return newsListAPI;
 });
