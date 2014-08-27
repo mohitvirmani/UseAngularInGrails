@@ -4,7 +4,7 @@ import grails.converters.JSON
 
 class HomeController {
 
-	static allowedMethods = [getAllNews: "GET"]
+	static allowedMethods = [getAllNews: "GET",saveEditNewsForm:'POST']
 
 	//First hit, index page, redirected to index.gsp view
 	def index() {
@@ -17,6 +17,9 @@ class HomeController {
 		def res = new HashMap()
 		def news = News.list();
 		log.debug "news " + news
+		news.each{
+			log.debug "it.id " + it.id
+		}
 		if(news.size()>0){
 			res.news =news
 			res.status="success"
@@ -132,6 +135,33 @@ class HomeController {
 		news.delete(failOnError : true)
 		def res = new HashMap()
 		res.message = "Success"
+		respond res,[formats:['json', 'xml']];
+		return res;
+	}
+	
+	def saveEditNewsForm(){
+		log.debug "saveEditNewsFormSatrted "
+		log.debug "params " + params
+		News currentlySelectedNews = News.findById(params.id)
+		log.debug "currentlySelectedNews " + currentlySelectedNews
+		
+		log.debug "params.Description " + params.description
+		log.debug "params.News " + params.heading
+		
+		currentlySelectedNews.descripton = params.description
+		currentlySelectedNews.heading = params.heading
+//		currentlySelectedNews.photo = params.photo
+		currentlySelectedNews.save(failOnError : true)
+		log.debug "currentlySelectedNews " + currentlySelectedNews
+		
+		def res = new HashMap()
+		
+		res.message = "Success"
+		
+		def newsList = News.list()
+		if(newsList[0]?.id){
+			res.news = currentlySelectedNews
+		}
 		respond res,[formats:['json', 'xml']];
 		return res;
 	}

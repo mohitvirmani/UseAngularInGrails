@@ -25,6 +25,7 @@
 			<tbody>
 				<tr ng-repeat="n in news | filter:search ">
 					<td>{{$index + 1 }}</td>
+<!-- 					<td>{{n.id}}</td> -->
 					<td>{{n.heading}}</td>
 					<td>{{n.descripton}}</td>
 					<td><a href="">{{n.pic}}</a></td>
@@ -46,23 +47,24 @@
 		<div class="content">
 			<div class="panel panel-default profile-detail">
 				<div class="panel-heading">
-					<h4>New Recipie</h4>
+					<h4>Edit News</h4>
 				</div>
 				<div class="panel-body">
 					<div class="row">
 						<div class="col-xs-12 col-sm-10">
-							<form action="" name="editRecipiesForm" role="form" novalidate>
+							<form action="" name="editNewsForm" role="form" novalidate>
 							<input type="text" name="count" id="count" style="display:none; " value="0">
 								<div class="row">
 										<div class="col-xs-12">
 											<p class="mr-b5">
-												<strong>Recipie Name</strong>
+												<strong>News Heading</strong>
 											</p>
 											<div class="col-xs-12 col-sm-6">
 												<div class="row">
 													<div class="form-group">
+														<input type="text" name="id" id="id" style="display:none; " value="{{currentlySelectedNews.id}}">
 														<input type="text"  required
-															name="Name" id="Name" value="{{recipie.name}}">
+															name="heading" id="heading" value="{{currentlySelectedNews.heading}}">
 													</div>
 												</div>
 											</div>
@@ -71,71 +73,19 @@
 									<div class="row">
 										<div class="col-xs-12">
 											<p class="mr-b5">
-												<strong>Discription About Recipie</strong>
+												<strong>News Description</strong>
 											</p>
 											<div class="col-xs-12 col-sm-6">
 												<div class="row">
 													<div class="form-group">
 														<textarea style="height: 100px; width: 500px" required
-															name="Discription" id="Discription">{{recipie.description}}</textarea>
+															name="description" id="description">{{currentlySelectedNews.descripton}}</textarea>
 													</div>
 												</div>
 											</div>
 										</div>
 									</div>
 									
-									<div id="appenddiv" ng-repeat="list in ingredientslist">
-									<h4 class="mr-b5" ng-show="$index==0">
-												<strong style="color: blue;">Recipie Ingredients:
-												<button type="button" class="btn btn-primary"
-															onclick="addRows()" >Add Ingredients</button>
-												</strong>
-											</h4>
-                                    
-											<strong style="color: blue;">Ingredients {{$index+1}}:</strong>
-												<div class="row">
-										<div class="col-xs-12">
-											<p class="mr-b5">
-												<strong>Name:</strong>
-											</p>
-											<div class="col-xs-12 col-sm-6">
-												<div class="row">
-													<div class="form-group">
-														<input type="text" name="IName{{$index}}" id="IName{{$index}}" required value="{{list.ingredientName}}">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-											<div class="row">
-										<div class="col-xs-12">
-											<p class="mr-b5">
-												<strong>Amount:</strong>
-											</p>
-											<div class="col-xs-12 col-sm-6">
-												<div class="row">
-													<div class="form-group">
-														<input type="number" name="IAmount{{$index}}" id="IAmount{{$index}}" required value="{{list.amount}}">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-											<div class="row">
-										<div class="col-xs-12">
-											<p class="mr-b5">
-												<strong>Amount Units:</strong>
-											</p>
-											<div class="col-xs-12 col-sm-6">
-												<div class="row">
-													<div class="form-group">
-														<input type="text" name="IAmountUnits{{$index}}" id="IAmountUnits{{$index}}" required value="{{list.amountUnits}}">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									</div>
 
 									<div class="row">
 										<div class="col-xs-12">
@@ -144,7 +94,7 @@
 											</p>
 											<div class="col-xs-12 col-sm-6">
 												<div class="row">
-<div class="form-group">
+													<div class="form-group">
 														<input type="file" name="photo" id="photo" required>
 													</div>
 												</div>
@@ -158,21 +108,18 @@
 												<div class="row">
 													<div class="form-group">
 														<button type="button" class="btn btn-primary"
-															ng-click="saveEdit(editRecipiesForm)">Save Recipie</button>
-
+															ng-click="saveEditNewsForm(editNewsForm)">Save Recipie</button>
 													</div>
 												</div>
 											</div>
 										</div>
-									
+									</div>
 							</form>
-						</div>
 					</div>
 				</div>
 			</div>
-
 		</div>
-	
+	</div>
 </div>
 
 </script>

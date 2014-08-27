@@ -74,6 +74,7 @@ var homePage = angular.module('useAngular');
 					}
 				}
 			};
+			
 	}]);
 
 // gets form data, and saves to database
@@ -102,6 +103,8 @@ function uploadNewsRecord() {
 		}
 	});
 }
+
+
 
 // New Controller created : Recipes controller
 homePage.controller('RecipiesPageData', [
@@ -203,7 +206,10 @@ homePage.controller('RecipiesPageData', [
 		} ]);
 
 //jQuery used instead of Angular
-//TODO : look into form submission issues in Angular 
+//TODO : look into form submission issues in Angular
+
+
+
 function uploadRecipiesRecord() {
 	console.log('uploadrecipedRecord created');
 	var formdata = new FormData(document.forms.namedItem("uploadRecipiesForm"));
@@ -260,9 +266,9 @@ var editRecipieCtrl = function($scope, $modalInstance, $location, $http,
 	$scope.saveEdit = function(editRecipiesForm) {
 		var status=editRecipiesRecord(id);
 		if(status == 'success'){
-		$modalInstance.dismiss('cancel');
+			$modalInstance.dismiss('cancel');
 		}
-};
+	};
 	$scope.deleteCancel = function() {
 		$modalInstance.dismiss('cancel');
 	};
@@ -271,16 +277,48 @@ var editRecipieCtrl = function($scope, $modalInstance, $location, $http,
 var editNewsCtrl = function($scope, $modalInstance, $location, $http,
 		$timeout, id) {
 	console.log('editNewsCtrl started');
-	$scope.news = $scope.getNewsFromNewsList(id);
-	console.log($scope.news);
+	$scope.currentlySelectedNews = $scope.getNewsFromNewsList(id);
+	console.log('$scope.news ' + $scope.currentlySelectedNews);
+	console.log('$scope.news.id ' + $scope.currentlySelectedNews.id);
+	console.log('$scope.news.heading ' + $scope.currentlySelectedNews.heading);
+	console.log('$scope.news.descripton ' + $scope.currentlySelectedNews.descripton);
+	console.log('$scope.news.pic ' + $scope.currentlySelectedNews.pic);
+	console.log('$scope.news.path ' + $scope.currentlySelectedNews.path);
 	
-	$scope.saveEdit = function(editRecipiesForm) {
-		var status=editRecipiesRecord(id);
-		if(status == 'success'){
+	$scope.saveEditNewsForm = function(){
+		console.log('saveEditNewsFormStarted');
+		var status = saveEditFormNewsRecord();
+		if(status == 'Success'){
 			$modalInstance.dismiss('cancel');
 		}
 	};
+	
 	$scope.deleteCancel = function() {
-		$modalInstance.dismiss('cancel');
+		$modalInstance.dismiss('Cancel');
 	};
 };
+
+function saveEditFormNewsRecord() {
+	console.log('saveEditFormNewsRecord started');
+	var formData = new FormData(document.forms.namedItem("editNewsForm"));
+	console.log("saveEditNewsForm " + formData);
+	var status
+	$.ajax({
+		url : 'editNews/edit.json',
+		type : 'POST',// don't use get request
+		data : formData,
+		processData : false,
+		contentType : false,
+		async : false,
+		success : function(response) {
+			console.log("success in " + response.message)
+			status = response.message
+		},
+		error : function(response) {
+			console.log("errors in " + response.message)
+			status = response.message
+		}
+	});
+	console.log('status ' + status);
+	return status
+}
