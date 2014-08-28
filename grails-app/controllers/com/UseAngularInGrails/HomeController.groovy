@@ -17,11 +17,24 @@ class HomeController {
 		def res = new HashMap()
 		def news = News.list();
 		log.debug "news " + news
-		news.each{
-			log.debug "it.id " + it.id
-		}
+		def newlist=[]
 		if(news.size()>0){
-			res.news =news
+			news.each {
+				def eachnews=[:]
+				eachnews.id=it.id
+				eachnews.heading=it.heading
+				def shortdescrption
+				if(it.descripton.length()>250){
+					shortdescrption =((it?.descripton)?.substring(0, 247))+"..."
+				}else{
+				shortdescrption =it?.descripton
+				}
+				eachnews.descripton=shortdescrption
+				eachnews.pic=it.pic
+				eachnews.picpath=it.picpath
+				newlist.add(eachnews)
+			}
+			res.news =newlist
 			res.status="success"
 			res.message="News list coming"
 		}else{
