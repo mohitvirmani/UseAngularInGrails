@@ -2,18 +2,18 @@
 var homePage = angular.module('useAngular');
 // homePageData controller defined below
 	homePage.controller('homePageData', [ '$scope', '$http', '$location',
-	                              		'newsServices','$modal',
-	                              		function($scope, $http, $location, newsServices, $modal) {
+	                              		'newsServices','$modal','$routeParams','$route',//this must be in serail order
+	                              		function($scope, $http, $location,newsServices,$modal,$routeParams,$route) {
 
 			// new function 'getAllNews()' created in the homePageData controller
 			$scope.userList = '';
 			$scope.news = '';
+			$scope.viewnewsdata='';
 			//New function created in homePageData controller, named getAllNews
 			$scope.getAllNews = function() {
 				//Calling the function getAllNews from the newsServices, which returns 
 					//data on success, which is saved in scope
 				newsServices.getAllNews().success(function(data) {
-					console.log('data ' + data);
 					$scope.news = data.news
 					console.log('$scope.news ' + data.news[0].heading);
 				})
@@ -75,15 +75,16 @@ var homePage = angular.module('useAngular');
 				}
 			};
 			
-			$scope.moreInfo = function(newsHeading){
+			$scope.moreInfo = function(id){
 				console.log('moreInfo started');
-				console.log('newsHeading ' + newsHeading);
-				newsServices.moreInfo(newsHeading).success(function(data) {
+				console.log('newsHeading ' + id);
+				newsServices.moreInfo(id).success(function(data) {
+					$scope.n=data.currentlySelectedNews
 					console.log("data.currentlySelectedNews " + data.currentlySelectedNews)
-//					$scope.updateDIVWithCurrentNews(data.currentlySelectedNews)
 					console.log("data.message " + data.message)
 				});
 			}
+			$scope.moreInfo($routeParams.id)
 			
 			$scope.updateDIVWithCurrentNews = function(currentlySelectedNews){
 				//Check how to update the current DIV with the news
@@ -289,27 +290,24 @@ var editRecipieCtrl = function($scope, $modalInstance, $location, $http,
 };
 
 var editNewsCtrl = function($scope, $modalInstance, $location, $http,
-		$timeout, id) {
+		$timeout, id,$route) {
 	console.log('editNewsCtrl started');
 	$scope.currentlySelectedNews = $scope.getNewsFromNewsList(id);
-	console.log('$scope.news ' + $scope.currentlySelectedNews);
-	console.log('$scope.news.id ' + $scope.currentlySelectedNews.id);
-	console.log('$scope.news.heading ' + $scope.currentlySelectedNews.heading);
-	console.log('$scope.news.descripton ' + $scope.currentlySelectedNews.descripton);
-	console.log('$scope.news.pic ' + $scope.currentlySelectedNews.pic);
-	console.log('$scope.news.path ' + $scope.currentlySelectedNews.path);
-	
+
 	$scope.saveEditNewsForm = function(){
 		console.log('saveEditNewsFormStarted');
 		var status = saveEditFormNewsRecord();
 		if(status == 'Success'){
+			$route.reload();//refresh the page 
 			$modalInstance.dismiss('cancel');
+			
 		}
 	};
 	
 	$scope.deleteCancel = function() {
 		$modalInstance.dismiss('Cancel');
 	};
+	
 };
 
 function saveEditFormNewsRecord() {

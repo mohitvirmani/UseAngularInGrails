@@ -32,16 +32,16 @@
 				<img src="/UseAngularInGrails/home/renderImage/{{n.id}}" alt=""
 					style="height: 100px; width: 300px">
 				<div class="caption">
-					<div height: 100px;">
+					<div style="height: 100px;overflow:scroll;">
 						<h3>{{n.heading}}</h3>
 					</div>
-					<div height: 200px;">
+					<div style="height: 200px;overflow:scroll;">
 						<p>{{n.descripton}}</p>
 					</div>
 					<p>
 						<a href="/UseAngularInGrails/home/downloadNewsPic/{{n.id}}"
 							class="btn btn-primary">Download Pic!</a> 
-						<a href="#{{n.heading}}" class="btn btn-default" ng-click="moreInfo(n.heading)">More Info</a>
+						<a href="#moreinfo/{{n.id}}" class="btn btn-default" >More Info</a>
 					</p>
 				</div>
 			</div>

@@ -5,7 +5,7 @@ homePage.service('newsServices', function($http) {
 
 	var newsListAPI = [];
 	//New function created in newsServices, getAllNews()
-	console.log('newsListAPI first  ' + newsListAPI);
+	console.log('newsListAPI first  ');
 	
 	newsListAPI.getAllNews = function() {
 		//call made to action:getAllNews, controller : home
@@ -16,14 +16,6 @@ homePage.service('newsServices', function($http) {
 		});
 	}
 	
-//	newsListAPI.editNews = function(id) {
-//		//call made to action:getAllNews, controller : home
-//		//HashMap returned by action, set to newsListAPI
-//		return $http({
-//			method : 'POST',
-//			url : 'home/editNews?id=' + id
-//		});
-//	}
 	
 	newsListAPI.deleteNews = function(id) {
 		//call made to action:getAllNews, controller : home
@@ -36,16 +28,16 @@ homePage.service('newsServices', function($http) {
 		});
 	}
 	
-	newsListAPI.moreInfo = function(newsHeading){
+	newsListAPI.moreInfo = function(id){
 		console.log('moreInfo service started');
-		console.log('heading ' + newsHeading);
+		console.log('heading id' + id);
 		return $http({
 			method : 'POST',
-			url : 'home/moreInfo?newsHeading='+newsHeading
+			url : 'home/moreInfo?id='+id
 		})
 	}
 	
-	console.log('newsListAPI second' + newsListAPI);
+	console.log('newsListAPI second');
 	return newsListAPI;
 });
 

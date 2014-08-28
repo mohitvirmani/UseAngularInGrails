@@ -150,40 +150,9 @@ class HomeController {
 		
 		currentlySelectedNews.descripton = params.description
 		currentlySelectedNews.heading = params.heading
-//		currentlySelectedNews.photo = params.photo
+		if(request.getFile("newsImage").getOriginalFilename()){
 		imageUploader(params.newsImage, currentlySelectedNews)
-		
-//		def filename=request.getFile("photo").getOriginalFilename()
-//		log.debug(filename)
-//		def path = 	grailsApplication.config.recipieImageLocation+File.separator+obj.id
-//		File file1 = new File(path)
-//		if(file1.exists()) {
-//			log.debug "File Exist"+file1.exists()
-//		}else{
-//			log.debug "File Created "+file1.mkdirs();
-//		}
-//		File f=new File(path+File.separator+filename)
-//		InputStream is = request.getFile("photo").getInputStream()
-//		OutputStream os = new FileOutputStream(path+File.separator+filename)   //file path
-//		byte[] buffer = new byte[request.getFile("photo").getSize()]
-//		int bytesRead
-//		while ((bytesRead = is.read(buffer)) != -1) {
-//			os.write(buffer, 0, bytesRead)
-//		}
-//		is.close()
-//		os.close()
-//
-//		if(f.exists()) {
-//			obj.picpath = path+File.separator+filename
-//			obj.pic = filename
-//			obj.save(flush:true)
-//			res.status=  "success"
-//			res.message= "Recipie Successfully Saved with file"
-//		}else{
-//			res.status="success"
-//			res.message="Recipie Successfully Saved without file "
-//		}
-		
+		}
 		currentlySelectedNews.save(failOnError : true)
 		log.debug "currentlySelectedNews " + currentlySelectedNews
 		
@@ -226,14 +195,13 @@ class HomeController {
 	def moreInfo(){
 		log.debug "moreInfo started"
 		log.debug "params " + params
-		log.debug "params.newsHeading " + params.newsHeading
-		News currentlySelectedNews = News.findByHeading(params.newsHeading)
-		log.debug "currentlySelectedNews " + currentlySelectedNews
-		
 		def res = new HashMap()
+		if(params.id != 'undefined'){
+		News currentlySelectedNews = News.findById(params.id)
+		log.debug "currentlySelectedNews " + currentlySelectedNews
 		res.currentlySelectedNews = currentlySelectedNews
+		}
 		res.message = "Success"
-		
 		respond res,[formats:['json', 'xml']];
 		return res;
 	}
