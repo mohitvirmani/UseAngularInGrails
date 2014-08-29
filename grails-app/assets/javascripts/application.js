@@ -9,9 +9,9 @@
 //=require js-theme/mediaelementplayer.min.js
 //=require js-theme/jquery.dcflickr.1.0.js
 //=require js-theme/twitter.min.js
-//=require js-theme/scripts.js
+
 //=require js/angular/bootstrap.js
-//=require js/angular/jquery-1.11.0.js
+
 //=require js/angular/angular-resource.js
 //=require js/angular/angular.js
 //=require js/angular/angular-route.js
