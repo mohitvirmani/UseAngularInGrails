@@ -12,3 +12,15 @@
 //=require js/angular/angular-resource.min.js
 //=require js/angularControllers/frontPageDataController.js
 //=require js/angularServices/frontPageDataService.js
+//=require js-theme/jquery-1.7.2.min.js
+//=require js-theme/ddsmoothmenu.js
+//=require js-theme/retina.js
+//=require js-theme/selectnav.js
+//=require js-theme/jquery.masonry.min.js
+//=require js-theme/jquery.fitvids.js
+//=require js-theme/jquery.backstretch.min.js
+//=require js-theme/mediaelement.min.js
+//=require js-theme/mediaelementplayer.min.js
+//=require js-theme/jquery.dcflickr.1.0.js
+//=require js-theme/twitter.min.js
+//=require js-theme/scripts.js

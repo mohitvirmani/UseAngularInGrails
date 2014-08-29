@@ -5,7 +5,7 @@ var app = angular.module('useAngular', ['ngRoute','ui.bootstrap']);
 app.config([ '$routeProvider', '$httpProvider',
 		function($routeProvider, $http) {
 		$routeProvider.when('/', {
-				templateUrl : 'view/homePage.html',
+				templateUrl : 'view/landingPage.html',
 				controller : 'homePageData'
 			}).when('/moreinfo/:id', {
 				templateUrl : 'view/viewinfo.html',

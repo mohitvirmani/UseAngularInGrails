@@ -30,26 +30,22 @@
 
 		<div class="col-md-3 col-sm-6 hero-feature" ng-repeat="n in news">
 			<div class="thumbnail">
-				<img src="/UseAngularInGrails/home/renderImage/{{n.id}}" alt=""
-					style="height: 100px; width: 300px">
-					<div style="height: 100px;">
-						<h4><b>{{n.heading}}</b></h4>
-					</div>
-					<div style="height: 200px;">
-						<p>{{n.descripton}}</p>
-					</div>
-					<p>
-						<a href="/UseAngularInGrails/home/downloadNewsPic/{{n.id}}"
-							class="btn btn-primary">Download Pic!</a> 
-						<a href="#moreinfo/{{n.id}}" class="btn btn-default" >More Info</a>
-					</p>
+				<img src="/UseAngularInGrails/home/renderImage/{{n.id}}" alt=""style="height: 100px; width: 300px">
+				<div style="height: 50px;">
+					<h4><b>{{n.heading}}</b></h4>
 				</div>
+				<div style="height: 100px;">
+					<p>{{n.descripton}}</p>
+				</div>
+				<p>
+					<a href="/UseAngularInGrails/home/downloadNewsPic/{{n.id}}"
+						class="btn btn-primary">Download Pic!</a> 
+					<a href="#moreinfo/{{n.id}}" class="btn btn-default" >More Info</a>
+				</p>
 			</div>
 		</div>
 	</div>
 </div>
 	<!-- /.row -->
-
 	<hr>
-
 <div ng-include src="'view/footer.html'"></div>
