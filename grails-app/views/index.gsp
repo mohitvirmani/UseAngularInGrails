@@ -6,5 +6,11 @@
 	</head>
 	<body>
 		<div ng-view></div>
+		<script>
+			$(document).ready(function(){
+				$.backstretch("assets/images-theme/bg/1.jpg");
+			});
+		</script>
 	</body>
 </html>
+
