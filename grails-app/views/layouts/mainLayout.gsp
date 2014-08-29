@@ -11,6 +11,7 @@
 		$.backstretch("assets/images/images-theme/bg/1.jpg");
 	</asset:script>
 
+
 </head>
 <body>
 	<g:layoutBody />

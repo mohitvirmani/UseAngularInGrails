@@ -13,6 +13,7 @@
 <div class="blog-wrap">
 	<!-- Begin Blog -->
 	<div class="blog-grid">
+	
 		<!-- Begin Image Format -->
 		<div class="post format-image box"> 
 			<div class="frame">
@@ -29,6 +30,59 @@
 			</div>
 		</div>
 		<!-- End Image Format -->
+		
+		<!-- Begin Image Format -->
+		<div class="post format-image box"> 
+			<div class="frame">
+				<a href="view/theme-views/post.html">
+					<img src="assets/images-theme/art/post1.jpg" alt="" />
+				</a>
+			</div>
+			<h2 class="title"><a href="../theme-views/post.html">Morning Glory</a></h2>
+			<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of autumn which I enjoy with my whole heart.</p>
+			<div class="details">
+				<span class="icon-image"><a href="#">September 26, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">44</a></span>
+				<span class="comments"><a href="#">3</a></span>
+			</div>
+		</div>
+		<!-- End Image Format -->
+		
+		<!-- Begin Image Format -->
+		<div class="post format-image box"> 
+			<div class="frame">
+				<a href="view/theme-views/post.html">
+					<img src="assets/images-theme/art/post1.jpg" alt="" />
+				</a>
+			</div>
+			<h2 class="title"><a href="../theme-views/post.html">Morning Glory</a></h2>
+			<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of autumn which I enjoy with my whole heart.</p>
+			<div class="details">
+				<span class="icon-image"><a href="#">September 26, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">44</a></span>
+				<span class="comments"><a href="#">3</a></span>
+			</div>
+		</div>
+		<!-- End Image Format -->
+		
+		<!-- Begin Image Format -->
+		<div class="post format-image box"> 
+			<div class="frame">
+				<a href="view/theme-views/post.html">
+					<img src="assets/images-theme/art/post1.jpg" alt="" />
+				</a>
+			</div>
+			<h2 class="title"><a href="../theme-views/post.html">Morning Glory</a></h2>
+			<p>A wonderful serenity has taken possession of my entire soul, like these sweet mornings of autumn which I enjoy with my whole heart.</p>
+			<div class="details">
+				<span class="icon-image"><a href="#">September 26, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">44</a></span>
+				<span class="comments"><a href="#">3</a></span>
+			</div>
+		</div>
+		<!-- End Image Format -->
+		
+		
 
  	
 		<!-- Begin Quote Format -->
@@ -145,6 +199,26 @@ $(document).ready(function(){
         });
         $container.css( 'visibility', 'visible' ).parent().removeClass( 'loading' );
     });
+    
+    jQuery(document).ready(function($) {	
+    	$('.quick-flickr-item').addClass("frame");
+    	$('.frame a').prepend('<span class="more"></span>');
+    	});
+
+    	jQuery(document).ready(function($) {
+    	        $('.frame').mouseenter(function(e) {
+
+    	            $(this).children('a').children('span').fadeIn(300);
+    	        }).mouseleave(function(e) {
+
+    	            $(this).children('a').children('span').fadeOut(200);
+    	        });
+    	    });	
+    	
+    	$.backstretch("assets/images/images-theme/bg/1.jpg");
+
 });
+
+
 
 </script>
