@@ -12,7 +12,7 @@
 		<div id="menu-wrapper">
 			<div id="menu" class="menu">
 				<ul id="tiny">
-					<li class="active"><a href="index.html">Home</a></li>
+					<li class="active"><a href="#">Home</a></li>
 					<li><a href="page-with-sidebar.html">Categories</a>
 						<ul>
 							<li><a href="page-with-sidebar.html">Category1</a></li>
@@ -23,7 +23,7 @@
 						</ul>
 					</li>
 					<li><a href="typography.html">Popular</a></li>
-					<li><div ng-click="updateDivToShowContact()">Contact</div></li>
+					<li><a href="#contact">Contact</a></li>
 				</ul>
 			</div>
 		</div>

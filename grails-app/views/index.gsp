@@ -5,6 +5,7 @@
 		<meta name='layout' content='mainLayout' />
 	</head>
 	<body>
+		<g:render template="home/header"/>
 		<div ng-view></div>
 		<script>
 			$(document).ready(function(){

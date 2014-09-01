@@ -90,6 +90,16 @@ var homePage = angular.module('useAngular');
 				//Check how to update the current DIV with the news
 			}
 			
+			$scope.updateDivToShowContact = function(){
+				$.ajax({
+					url : 'home/contactDetails',
+					type: 'GET',
+					success : function(response){
+						$('.wrapper').html(response);
+					}
+				})
+			}
+			
 	}]);
 
 // gets form data, and saves to database
