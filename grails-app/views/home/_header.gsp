@@ -15,14 +15,15 @@
 					<li class="active"><a href="#">Home</a></li>
 					<li><a href="page-with-sidebar.html">Categories</a>
 						<ul>
-							<li><a href="page-with-sidebar.html">Category1</a></li>
-							<li><a href="page-with-sidebar.html">Category2</a></li>
-							<li><a href="page-with-sidebar.html">Category3</a></li>
-							<li><a href="page-with-sidebar.html">Category4</a></li>
-							<li><a href="page-with-sidebar.html">Category5</a></li>
+							<li><a href="#science">Science</a></li>
+							<li><a href="#environment">Environment</a></li>
+							<li><a href="#history">History</a></li>
+							<li><a href="#technology">Technology</a></li>
+							<li><a href="#transport">Transport</a></li>
+							<li><a href="#space">Space</a></li>
 						</ul>
 					</li>
-					<li><a href="typography.html">Popular</a></li>
+					<li><a href="#popular">Popular</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
 			</div>

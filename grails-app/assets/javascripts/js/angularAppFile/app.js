@@ -10,6 +10,27 @@ app.config([ '$routeProvider', '$httpProvider',
 			}).when('/moreinfo/:id', {
 				templateUrl : 'view/viewinfo.html',
 				controller : 'homePageData'
+			}).when('/science', {
+				templateUrl : 'view/categories/science.html',
+				controller : 'homePageData'
+			}).when('/environment', {
+				templateUrl : 'view/categories/environment.html',
+				controller : 'homePageData'
+			}).when('/history', {
+				templateUrl : 'view/categories/history.html',
+				controller : 'homePageData'
+			}).when('/technology', {
+				templateUrl : 'view/categories/technology.html',
+				controller : 'homePageData'
+			}).when('/transport', {
+				templateUrl : 'view/categories/transport.html',
+				controller : 'homePageData'
+			}).when('/space', {
+				templateUrl : 'view/categories/space.html',
+				controller : 'homePageData'
+			}).when('/popular', {
+				templateUrl : 'view/theme-views/popular.html',
+				controller : 'homePageData'
 			}).when('/contact', {
 				templateUrl : 'view/theme-views/contact.html',
 				controller : 'homePageData'
