@@ -79,8 +79,8 @@
 </div>
 <!-- End Wrapper -->
 <!-- Navigation -->
-<div ng-include src="'view/theme-views/theme-footer.html'"></div>
-
+<!-- <div ng-include src="'view/theme-views/theme-footer.html'"></div> -->
+		
 <script>
 $(document).ready(function(){
 /*-----------------------------------------------------------------------------------*/
@@ -119,20 +119,17 @@ $(document).ready(function(){
     	$('.frame a').prepend('<span class="more"></span>');
     	});
 
-    	jQuery(document).ready(function($) {
-    	        $('.frame').mouseenter(function(e) {
+   	jQuery(document).ready(function($) {
+   	        $('.frame').mouseenter(function(e) {
 
-    	            $(this).children('a').children('span').fadeIn(300);
-    	        }).mouseleave(function(e) {
+   	            $(this).children('a').children('span').fadeIn(300);
+   	        }).mouseleave(function(e) {
 
-    	            $(this).children('a').children('span').fadeOut(200);
-    	        });
-    	    });	
+   	            $(this).children('a').children('span').fadeOut(200);
+   	        });
+   	    });	
     	
     	
 
 });
-
-
-
 </script>
