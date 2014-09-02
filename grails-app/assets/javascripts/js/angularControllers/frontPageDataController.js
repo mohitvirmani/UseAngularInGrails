@@ -15,7 +15,6 @@ var homePage = angular.module('useAngular');
 					//data on success, which is saved in scope
 				newsServices.getAllNews().success(function(data) {
 					$scope.news = data.news
-					console.log('$scope.news ' + data.news[0].heading);
 				})
 			}
 			
@@ -29,8 +28,6 @@ var homePage = angular.module('useAngular');
 			}
 			
 			$scope.editNews = function(id) {
-				console.log("editRecipe started");
-				console.log("id " + id)
 				var editNewsModal = $modal.open({
 					templateUrl : 'editNewsTemplate.html',
 					controller : 'editNewsCtrl',
@@ -44,8 +41,6 @@ var homePage = angular.module('useAngular');
 			};
 			
 			$scope.deleteNews = function(id){
-				console.log('delete news function called');
-				console.log("id " + id);
 				newsServices.deleteNews(id).success(function(data) {
 					$scope.removeNewsFromTable(id)
 					console.log(data.message)
@@ -54,7 +49,6 @@ var homePage = angular.module('useAngular');
 			
 			// removeRecipeFromTable() : Hide the deleted row from table and also remove the entry from DB
 			$scope.removeNewsFromTable = function(id) {
-				console.log("removeNewsFromTable started");
 				for (i = 0; i < $scope.news.length; i++) {
 					if ($scope.news[i].id == id) {
 						console.log("iterate " + i)
@@ -65,9 +59,6 @@ var homePage = angular.module('useAngular');
 			};
 			
 			$scope.getNewsFromNewsList = function(id) {
-				console.log('getNewsFromNewsList started');
-				console.log( id );
-				console.log('id' + id);
 				for (i = 0; i < $scope.news.length; i++) {
 					if ($scope.news[i].id == id) {
 						return $scope.news[i];
@@ -76,12 +67,8 @@ var homePage = angular.module('useAngular');
 			};
 			
 			$scope.moreInfo = function(id){
-				console.log('moreInfo started');
-				console.log('newsHeading ' + id);
 				newsServices.moreInfo(id).success(function(data) {
 					$scope.n=data.currentlySelectedNews
-					console.log("data.currentlySelectedNews " + data.currentlySelectedNews)
-					console.log("data.message " + data.message)
 				});
 			}
 			$scope.moreInfo($routeParams.id)
@@ -90,11 +77,20 @@ var homePage = angular.module('useAngular');
 				//Check how to update the current DIV with the news
 			}
 			
+			$scope.updateDivToShowContact = function(){
+				$.ajax({
+					url : 'home/contactDetails',
+					type: 'GET',
+					success : function(response){
+						$('.wrapper').html(response);
+					}
+				})
+			}
+			
 	}]);
 
 // gets form data, and saves to database
 function uploadNewsRecord() {
-	console.log('uploadNewsRecord started');
 	//Get form data
 	var formdata = new FormData(document.forms.namedItem("uploadNewsForm"));
 

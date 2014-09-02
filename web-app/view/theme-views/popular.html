@@ -1,0 +1,37 @@
+<div class="wrapper">
+<!-- Begin Blog Grid -->
+<div class="blog-wrap">
+	<!-- Begin Blog -->
+	<div class="blog-grid">
+		<!-- Begin Image Format -->
+		<div class="post format-image box" ng-repeat="n in news">  
+			<div class="frame">
+				<a href="view/theme-views/post.html">
+					<img data-ng-src="/UseAngularInGrails/home/renderImage/{{n.id}}" alt="" />
+				</a>
+			</div>
+			<h2 class="title"><a href="#moreinfo/{{n.id}}">{{n.heading}}</a></h2>
+			<p>{{n.descripton}}</p>
+			<div class="details">
+				<span class="icon-image"><a href="#">September 26, 2012</a></span>
+				<span class="likes"><a href="#" class="likeThis">44</a></span>
+				<span class="comments"><a href="#">3</a></span>
+			</div>
+		</div>
+		<!-- End Image Format -->
+		<!-- End Standard Format --> 					
+ 	</div>
+	<!-- End Blog -->
+</div>
+<!-- End Blog Grid -->
+
+<!-- Begin Page-navi -->
+    <div id="navigation">
+     	<div class="nav-previous"><a href="#" ><span class="meta-nav-prev">&larr; Older posts</span></a></div>
+		<div class="nav-next"><a href="#" ><span class="meta-nav-next">Newer posts &rarr;</span></a></div>
+    </div>
+    <!-- End Page-navi --> 
+
+</div>
+<!-- End Wrapper -->
+<!-- Navigation -->

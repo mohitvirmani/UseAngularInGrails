@@ -1,36 +1,16 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-	<div ng-include src="'view/header.html'"></div>
-	<div style="margin-top: 50px">
-
-		<div class="content">
-			<div class="panel panel-default profile-detail">
-				<div class="panel-heading">
-					<h4>Views News</h4>
-				</div>
-				<div style="height: 500px; width: 500px; float: left">
-					<img src="/UseAngularInGrails/home/renderImage/{{n.id}}" alt=""
-						style="height: 500px; width: 500px;">
-				</div>
-				<div
-					style="height: 90px; width: 920px; float: left;background-color: white; border-radius: 2px; box-shadow: 0 4px 6px 1px rgba(50, 50, 50, 0.14);">
-
-					<h1>{{n.heading}}</h1>
-				</div>
-				<div
-					style="height: 408px; width: 920px; float: left; background-color: white; border-radius: 2px; box-shadow: 0 4px 6px 1px rgba(50, 50, 50, 0.14);">
-					<br></br><p>{{n.descripton}}</p></div>
-
-			</div>
+<!-- Begin Image Format -->
+	<div class="post format-image box">  
+		<div class="frame">
+			<a href="view/theme-views/post.html">
+				<img data-ng-src="/UseAngularInGrails/home/renderImage/{{n.id}}" alt="" />
+			</a>
+		</div>
+		<h2 class="title"><a href="#moreinfo/{{n.id}}">{{n.heading}}</a></h2>
+		<p>{{n.descripton}}</p>
+		<div class="details">
+			<span class="icon-image"><a href="#">September 26, 2012</a></span>
+			<span class="likes"><a href="#" class="likeThis">44</a></span>
+			<span class="comments"><a href="#">3</a></span>
 		</div>
 	</div>
-	</div>
-
-	<div ng-include src="'view/footer.html'"></div>
-</body>
-</html>
+<!-- End Image Format -->

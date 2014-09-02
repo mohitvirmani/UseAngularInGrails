@@ -23,6 +23,10 @@ class UrlMappings {
 			action = [ POST:"saveEditNewsForm"]
 		}
 		
+		"/home/contactDetails(.${format})"(controller:"home", parseRequest:true){
+			action = [ GET:"contactDetails"]
+		}
+		
 		//Recipe Controller
 		"/getRecipielist(.${format})"(controller:"recipies", parseRequest:true){
 			action = [ GET:"recipieslist"]

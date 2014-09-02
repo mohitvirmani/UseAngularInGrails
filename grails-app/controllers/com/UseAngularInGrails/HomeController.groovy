@@ -218,5 +218,9 @@ class HomeController {
 		respond res,[formats:['json', 'xml']];
 		return res;
 	}
+	
+	def contactDetails(){
+		
+	}
 
 }
