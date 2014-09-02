@@ -10,6 +10,9 @@ app.config([ '$routeProvider', '$httpProvider',
 			}).when('/moreinfo/:id', {
 				templateUrl : 'view/viewinfo.html',
 				controller : 'homePageData'
+			}).when('/categories', {
+				templateUrl : 'view/categories/categories.html',
+				controller : 'homePageData'
 			}).when('/science', {
 				templateUrl : 'view/categories/science.html',
 				controller : 'homePageData'

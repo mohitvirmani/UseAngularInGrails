@@ -13,7 +13,7 @@
 			<div id="menu" class="menu">
 				<ul id="tiny">
 					<li class="active"><a href="#">Home</a></li>
-					<li><a href="page-with-sidebar.html">Categories</a>
+					<li><a href="#categories">Categories</a>
 						<ul>
 							<li><a href="#science">Science</a></li>
 							<li><a href="#environment">Environment</a></li>

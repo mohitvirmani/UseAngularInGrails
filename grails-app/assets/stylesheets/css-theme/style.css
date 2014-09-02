@@ -342,7 +342,7 @@ hr {
     visibility: hidden;
 }
 .blog-grid {
-    visibility: normal
+    visibility: visible;
 }
 .loading {
     background: transparent url(../../images/images-theme/loading.gif) no-repeat 50% 20px;

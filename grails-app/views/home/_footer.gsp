@@ -82,7 +82,6 @@
 	<div class="site-generator">Copyright Obscura 2012. Design by <a href="http://elemisfreebies.com">elemis</a>. All rights reserved.</div>
 </div>
 <!-- End Footer --> 
-<!-- <script type="text/javascript" src="assets/js-theme/scripts.js"></script> -->
 
 <script>
 
@@ -106,4 +105,19 @@ $(document).ready(function($){
         });
 		}
 	});
-});	</script>
+
+	jQuery(document).ready(function($) {	
+		$('.quick-flickr-item').addClass("frame");
+		$('.frame a').prepend('<span class="more"></span>');
+	});
+
+	jQuery(document).ready(function($) {
+		$('.frame').mouseenter(function(e) {
+			$(this).children('a').children('span').fadeIn(300);
+		}).mouseleave(function(e) {
+			$(this).children('a').children('span').fadeOut(200);
+		});
+	});	
+
+});	
+</script>

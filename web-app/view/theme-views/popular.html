@@ -27,67 +27,11 @@
 
 <!-- Begin Page-navi -->
     <div id="navigation">
-      <div class="nav-previous"><a href="#" ><span class="meta-nav-prev">&larr; Older posts</span></a></div>
-      <!-- 
-			<div class="nav-next"><a href="#" ><span class="meta-nav-next">Newer posts &rarr;</span></a></div>
-			 --> 
+     	<div class="nav-previous"><a href="#" ><span class="meta-nav-prev">&larr; Older posts</span></a></div>
+		<div class="nav-next"><a href="#" ><span class="meta-nav-next">Newer posts &rarr;</span></a></div>
     </div>
     <!-- End Page-navi --> 
 
 </div>
 <!-- End Wrapper -->
 <!-- Navigation -->
-<!-- <div ng-include src="'view/theme-views/theme-footer.html'"></div> -->
-		
-<script>
-$(document).ready(function(){
-/*-----------------------------------------------------------------------------------*/
-/*	POSTS GRID
-/*-----------------------------------------------------------------------------------*/ 
-    var $container = $('.blog-grid');
-
-    var gutter = 30;
-    var min_width = 345;
-    $container.imagesLoaded( function(){
-        $container.masonry({
-            itemSelector : '.post',
-            gutterWidth: gutter,
-            isAnimated: true,
-              columnWidth: function( containerWidth ) {
-                var box_width = (((containerWidth - gutter)/2) | 0) ;
-
-                if (box_width < min_width) {
-                    box_width = (((containerWidth - gutter)/2) | 0);
-                }
-
-                if (box_width < min_width) {
-                    box_width = containerWidth;
-                }
-
-                $('.post').width(box_width);
-
-                return box_width;
-              }
-        });
-        $container.css( 'visibility', 'visible' ).parent().removeClass( 'loading' );
-    });
-    
-    jQuery(document).ready(function($) {	
-    	$('.quick-flickr-item').addClass("frame");
-    	$('.frame a').prepend('<span class="more"></span>');
-    	});
-
-   	jQuery(document).ready(function($) {
-   	        $('.frame').mouseenter(function(e) {
-
-   	            $(this).children('a').children('span').fadeIn(300);
-   	        }).mouseleave(function(e) {
-
-   	            $(this).children('a').children('span').fadeOut(200);
-   	        });
-   	    });	
-    	
-    	
-
-});
-</script>

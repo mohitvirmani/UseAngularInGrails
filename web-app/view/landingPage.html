@@ -1,4 +1,4 @@
-<div class="scanlines"></div>
+<!-- <div class="scanlines"></div> -->
 <!-- Navigation -->
 <div ng-include src="'view/theme-views/landingPageNavigation.html'"></div>
 
@@ -63,10 +63,8 @@
 
 <!-- Begin Page-navi -->
     <div id="navigation">
-      <div class="nav-previous"><a href="#" ><span class="meta-nav-prev">&larr; Older posts</span></a></div>
-      <!-- 
-			<div class="nav-next"><a href="#" ><span class="meta-nav-next">Newer posts &rarr;</span></a></div>
-			 --> 
+		<div class="nav-previous"><a href="#" ><span class="meta-nav-prev">&larr; Older posts</span></a></div>
+		<div class="nav-next"><a href="#" ><span class="meta-nav-next">Newer posts &rarr;</span></a></div>
     </div>
     <!-- End Page-navi --> 
 
@@ -80,48 +78,59 @@ $(document).ready(function(){
 /*-----------------------------------------------------------------------------------*/
 /*	POSTS GRID
 /*-----------------------------------------------------------------------------------*/ 
-    var $container = $('.blog-grid');
+//     var $container = $('.blog-grid');
+// 	console.log('$container ' + $container);
 
-    var gutter = 30;
-    var min_width = 345;
-    $container.imagesLoaded( function(){
-        $container.masonry({
-            itemSelector : '.post',
-            gutterWidth: gutter,
-            isAnimated: true,
-              columnWidth: function( containerWidth ) {
-                var box_width = (((containerWidth - gutter)/2) | 0) ;
-
-                if (box_width < min_width) {
-                    box_width = (((containerWidth - gutter)/2) | 0);
-                }
-
-                if (box_width < min_width) {
-                    box_width = containerWidth;
-                }
-
-                $('.post').width(box_width);
-
-                return box_width;
-              }
-        });
-        $container.css( 'visibility', 'visible' ).parent().removeClass( 'loading' );
-    });
+//     var gutter = 30;
+//     console.log('gutter ' + gutter);
     
-    jQuery(document).ready(function($) {	
-    	$('.quick-flickr-item').addClass("frame");
-    	$('.frame a').prepend('<span class="more"></span>');
-    	});
+//     var min_width = 345;
+//     console.log('min_width ' + min_width);
+    
+//     $container.imagesLoaded( function(){
+//         $container.masonry({
+//             itemSelector : '.post',
+//             gutterWidth: gutter,
+//             isAnimated: true,
+//               columnWidth: function( containerWidth ) {
+//             	console.log('containerWidth ' + containerWidth);
+            	
+//                 var box_width = (((containerWidth - gutter)/2) | 0) ;
+// 				console.log('box_width ' + box_width);
+				
+//                 if (box_width < min_width) {
+//                 	console.log('box_width < min_width 1 ' + box_width < min_width);
+//                     box_width = (((containerWidth - gutter)/2) | 0);
+//                     console.log('box_width ' + box_width);
+//                 }
 
-   	jQuery(document).ready(function($) {
-   	        $('.frame').mouseenter(function(e) {
+//                 if (box_width < min_width) {
+//                 	console.log('box_width < min_width 2 ' + box_width < min_width);
+//                     box_width = containerWidth;
+//                 }
 
-   	            $(this).children('a').children('span').fadeIn(300);
-   	        }).mouseleave(function(e) {
+//                 $('.post').width(box_width);
 
-   	            $(this).children('a').children('span').fadeOut(200);
-   	        });
-   	    });	
+//                 return box_width;
+//               }
+//         });
+//         $container.css( 'visibility', 'visible' ).parent().removeClass( 'loading' );
+//     });
+    
+//     JQUERY(DOCUMENT).READY(FUNCTION($) {	
+//     	$('.QUICK-FLICKR-ITEM').ADDCLASS("FRAME");
+//     	$('.FRAME A').PREPEND('<SPAN CLASS="MORE"></SPAN>');
+//     	});
+
+//    	JQUERY(DOCUMENT).READY(FUNCTION($) {
+//    	        $('.FRAME').MOUSEENTER(FUNCTION(E) {
+
+//    	            $(THIS).CHILDREN('A').CHILDREN('SPAN').FADEIN(300);
+//    	        }).MOUSELEAVE(FUNCTION(E) {
+
+//    	            $(THIS).CHILDREN('A').CHILDREN('SPAN').FADEOUT(200);
+//    	        });
+//    	    });	
     	
     	
 

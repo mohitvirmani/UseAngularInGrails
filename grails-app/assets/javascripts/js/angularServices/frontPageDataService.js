@@ -5,8 +5,6 @@ homePage.service('newsServices', function($http) {
 
 	var newsListAPI = [];
 	//New function created in newsServices, getAllNews()
-	console.log('newsListAPI first  ');
-	
 	newsListAPI.getAllNews = function() {
 		//call made to action:getAllNews, controller : home
 		//HashMap returned by action, set to newsListAPI
@@ -29,15 +27,11 @@ homePage.service('newsServices', function($http) {
 	}
 	
 	newsListAPI.moreInfo = function(id){
-		console.log('moreInfo service started');
-		console.log('heading id' + id);
 		return $http({
 			method : 'POST',
 			url : 'home/moreInfo?id='+id
 		})
 	}
-	
-	console.log('newsListAPI second');
 	return newsListAPI;
 });
 
