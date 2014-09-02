@@ -1,23 +1,16 @@
-
 <!-- Begin Footer -->
 <div class="footer-wrapper">
 <div id="footer" class="four">
 		<div id="first" class="widget-area">
-			<div class="widget widget_search">
-				<h3 class="widget-title">Search</h3>
-				<form class="searchform" method="get" action="#">
-					<input type="text" name="s" value="type and hit enter" onFocus="this.value=''" onBlur="this.value='type and hit enter'"/>
-				</form>
-			</div>
 			<div class="widget widget_archive">
-				<h3 class="widget-title">Archives</h3>
+				<h3 class="widget-title">Categories</h3>
 				<ul>
-					<li><a href="#">September 2012</a> (6)</li>
-					<li><a href="#">August 2012</a> (2)</li>
-					<li><a href="#">July 2012</a> (2)</li>
-					<li><a href="#">June 2012</a> (4)</li>
-					<li><a href="#">May 2012</a> (3)</li>
-					<li><a href="#">January 2012</a> (1)</li>
+					<li><a href="#science">Science</a></li>
+					<li><a href="#environment">Environment</a></li>
+					<li><a href="#history">History</a></li>
+					<li><a href="#technology">Technology</a></li>
+					<li><a href="#transport">Transport</a></li>
+					<li><a href="#space">Space</a></li>
 				</ul>
 			</div>	
 		</div><!-- #first .widget-area -->
@@ -71,7 +64,7 @@
 		
 		<div id="fourth" class="widget-area">
 		<div class="widget">
-			<h3 class="widget-title">Flickr</h3>
+			<h3 class="widget-title">Latest posts</h3>
 			<ul class="flickr-feed"></ul>
 			
 		</div>
@@ -79,7 +72,7 @@
 	</div>
 </div>
 <div class="site-generator-wrapper">
-	<div class="site-generator">Copyright Obscura 2012. Design by <a href="http://elemisfreebies.com">elemis</a>. All rights reserved.</div>
+	<div class="site-generator">Copyright 2014. All rights reserved.</div>
 </div>
 <!-- End Footer --> 
 
